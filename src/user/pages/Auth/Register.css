@@ -1,0 +1,69 @@
+.register-container {
+  width: 100%;
+  min-height: 800px;
+  text-align: center;
+  background: url(./Images/background.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  padding: 70px 31%;
+}
+
+.register-container-welkom {
+  font-family: Playfair Display;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 37px;
+  text-align: center;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.register-container-nieuw {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.register-form-container {
+  margin-top: 74px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.login-form-name {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.register-form-text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+  margin-top: 23px;
+  color: #ffffff;
+}
+
+@media only screen and (max-width: 768px) {
+  .register-container {
+    padding: 70px 21%;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .register-container {
+    padding: 70px 10%;
+  }
+}

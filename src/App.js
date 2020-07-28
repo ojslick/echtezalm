@@ -3,6 +3,8 @@ import { Router, Route, Switch } from 'react-router-dom';
 
 import history from './history';
 import LandingPage from './products/pages/LandingPage';
+import Login from './user/pages/Auth/Login';
+import Register from './user/pages/Auth/Register';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
 
 class App extends React.Component {
@@ -12,6 +14,8 @@ class App extends React.Component {
         <MainNavigation />
         <Switch>
           <Route path="/" exact component={LandingPage} />
+          <Route path="/login" exact component={Login} />
+          <Route path="/register" exact component={Register} />
         </Switch>
       </Router>
     );

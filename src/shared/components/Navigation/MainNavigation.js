@@ -1,6 +1,7 @@
 import React from 'react';
 
 import SideBar from './SideBar';
+import history from '../../../history';
 
 import cart from './images/cart.svg';
 import user from './images/user.svg';
@@ -186,6 +187,7 @@ class MainNavigation extends React.Component {
                       }`}
                       onClick={() => {
                         this.handleClick('mijnRekening');
+                        history.push('/login');
                       }}
                     >
                       Log in
@@ -194,7 +196,10 @@ class MainNavigation extends React.Component {
                       className={`${
                         this.state.Inschrijven ? 'nav-text-active' : 'nav-text'
                       }`}
-                      onClick={() => this.handleClick('mijnRekening')}
+                      onClick={() => {
+                        this.handleClick('mijnRekening');
+                        history.push('/register');
+                      }}
                       style={{ marginTop: '10px' }}
                     >
                       Inschrijven
@@ -282,7 +287,10 @@ class MainNavigation extends React.Component {
                 className={`${
                   this.state.login ? 'nav-text-active' : 'nav-text'
                 }`}
-                onClick={() => this.handleClick('mijnRekening')}
+                onClick={() => {
+                  this.handleClick('mijnRekening');
+                  history.push('/login');
+                }}
               >
                 Log in
               </li>
@@ -290,7 +298,10 @@ class MainNavigation extends React.Component {
                 className={`${
                   this.state.Inschrijven ? 'nav-text-active' : 'nav-text'
                 }`}
-                onClick={() => this.handleClick('mijnRekening')}
+                onClick={() => {
+                  this.handleClick('mijnRekening');
+                  history.push('/register');
+                }}
               >
                 Inschrijven
               </li>

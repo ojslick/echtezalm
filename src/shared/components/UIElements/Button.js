@@ -13,6 +13,7 @@ class Button extends React.Component {
           color: this.props.color,
           border: this.props.border,
           cursor: 'pointer',
+          marginTop: this.props.marginTop,
         }}
         className="button-style"
         onClick={this.props.onClick}
