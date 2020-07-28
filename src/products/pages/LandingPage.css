@@ -1,5 +1,6 @@
 .landing-page-container {
   width: 100%;
+  background-color: #000000;
 }
 
 .landing-page-red-bar-timer {
@@ -42,4 +43,485 @@
   letter-spacing: 0.05em;
 
   color: #ffffff;
+}
+
+.landing-page-button-container {
+  display: flex;
+  width: 60%;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 76px;
+}
+
+.landing-page-collection-container {
+  width: 100%;
+  padding: 5% 10%;
+  background: black;
+}
+
+.landing-page-collection-salmon {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.landing-page-collection-salmon-left {
+  width: 45%;
+}
+
+.landing-page-collection-salmon-left-header {
+  font-family: Playfair Display;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 37px;
+  letter-spacing: 0.05em;
+
+  color: #dac08e;
+}
+
+.landing-page-collection-salmon-left-text-box {
+  width: 100%;
+  height: 247px;
+}
+
+.landing-page-collection-salmon-left-text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.landing-page-collection-salmon-right {
+  min-width: 45%;
+  height: 347px;
+  background: url('./images/Rectangle\ 13.jpg');
+}
+
+.landing-page-collection-onze-collectie {
+  margin-top: 83px;
+  font-family: Playfair Display;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 37px;
+  text-align: center;
+  letter-spacing: 0.05em;
+
+  color: #dac08e;
+}
+
+.landing-page-collection-onze-exclusieve {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 22px;
+  text-align: center;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.landing-page-collection-edition {
+  margin-top: 72px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.landing-page-collection-black-edition {
+  width: 31%;
+  height: 301px;
+  background: url('./images/Rectangle\ 10.jpg'),
+    linear-gradient(180deg, #ffffff 53.32%, #000000 135.38%);
+
+  position: relative;
+  padding: 15px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.landing-page-collection-dutch-edition {
+  width: 31%;
+  height: 301px;
+  background: url('./images/Rectangle\ 94.jpg'),
+    linear-gradient(180deg, #ffffff 53.32%, #000000 135.38%);
+
+  position: relative;
+  padding: 15px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.landing-page-collection-classic-edition {
+  width: 31%;
+  height: 301px;
+  background: url('./images/Rectangle\ 12.jpg'),
+    linear-gradient(180deg, #ffffff 53.32%, #000000 135.38%);
+
+  position: relative;
+  padding: 15px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.landing-page-collection-black-edition-text {
+  position: absolute;
+  font-family: Playfair Display;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 33px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.landing-page-products {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.landing-page-line {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.landing-page-collection-Eenvoudige {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10% 66px;
+}
+
+.landing-page-collection-Eenvoudige-Inschrijven {
+  height: 250px;
+  width: 22.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 72px;
+  text-align: center;
+}
+
+.landing-page-collection-Eenvoudige-Inschrijven-header {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 28px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.landing-page-collection-Eenvoudige-Inschrijven-text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.landing-page-collection-Eenvoudige-Inschrijven-top {
+  width: 100%;
+  height: 160px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.landing-page-collection-Eenvoudige-Inschrijven-line {
+  display: inline-block;
+  width: 51px;
+  border: 1px solid #dac08e;
+}
+
+.landing-page-collection-reviews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  margin-top: 66px 0;
+  padding: 39px 10%;
+  background: #3a3a3a;
+  min-height: 200px;
+}
+
+.landing-page-collection-stars {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 56px;
+}
+
+.landing-page-collection-review-header {
+  font-family: Playfair Display;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 27px;
+
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.landing-page-collection-review-slide {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 23px;
+}
+
+.landing-page-collection-review-text-container {
+  width: 80%;
+  text-align: center;
+}
+
+.landing-page-collection-review-text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.landing-page-collection-review-user-name {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 22px;
+
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.landing-page-collection-blog {
+  width: 100%;
+  background: #101010;
+  min-height: 200px;
+  padding: 66px 10%;
+}
+
+.landing-page-collection-blog-header {
+  font-family: Playfair Display;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 37px;
+  letter-spacing: 0.05em;
+  margin: 0;
+  color: #dac08e;
+}
+
+.landing-page-collection-blog-header-text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+  margin-top: 11px;
+  color: #ffffff;
+}
+
+.landing-page-collection-blog-header-blog-list-container {
+  margin-top: 52px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.landing-page-collection-blog-header-blog-list-left {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 360px;
+}
+
+.landing-page-collection-blog-header-blog-list-item {
+  width: 100%;
+  height: 98px;
+  display: flex;
+  padding: 0 15px;
+  justify-content: space-between;
+  align-items: center;
+  background: #000000;
+}
+
+.landing-page-collection-blog-header-blog-list-item-date {
+  width: 15%;
+  text-align: center;
+}
+
+.landing-page-collection-blog-header-blog-list-item-date-day {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 42px;
+  /* identical to box height */
+  letter-spacing: 0.05em;
+
+  color: #dac08e;
+}
+
+.landing-page-collection-blog-header-blog-list-item-date-month {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 22px;
+  /* identical to box height */
+
+  letter-spacing: 0.05em;
+
+  color: #dac08e;
+}
+
+.landing-page-collection-blog-header-blog-list-item-bar {
+  width: 1%;
+  height: 100%;
+
+  background: #ad976e;
+}
+
+.landing-page-collection-blog-header-blog-list-item-text-box {
+  width: 75%;
+}
+
+.landing-page-collection-blog-header-blog-list-item-text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.landing-page-collection-blog-header-blog-list-right {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 360px;
+}
+
+@media only screen and (max-width: 768px) {
+  .landing-page-red-bar-timer-text {
+    font-size: 14px;
+  }
+
+  .landing-page-background-pic {
+    padding: 15% 5% 0;
+  }
+
+  .landing-page-collection-salmon {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .landing-page-collection-salmon-left {
+    margin-top: 27px;
+    width: 100%;
+  }
+
+  .landing-page-collection-onze-collectie {
+    margin-top: 250px;
+  }
+
+  .landing-page-collection-edition {
+    display: inline-block;
+  }
+
+  .landing-page-collection-black-edition {
+    width: 100%;
+  }
+
+  .landing-page-collection-dutch-edition {
+    width: 100%;
+    margin-top: 27px;
+  }
+
+  .landing-page-collection-classic-edition {
+    width: 100%;
+    margin-top: 27px;
+  }
+
+  .landing-page-collection-onze-collectie.margintop {
+    margin-top: 37px;
+  }
+
+  .landing-page-products {
+    display: inline-block;
+  }
+
+  .product-card-container {
+    width: 100%;
+  }
+
+  .landing-page-collection-Eenvoudige {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .landing-page-collection-Eenvoudige-Inschrijven {
+    width: 100%;
+  }
+
+  .landing-page-collection-reviews {
+    min-height: 600px;
+  }
+
+  .landing-page-collection-review-user-name {
+    margin-top: 10px;
+  }
+
+  .landing-page-collection-blog-header-blog-list-container {
+    display: inline-block;
+    width: 100%;
+  }
+  .landing-page-collection-blog-header-blog-list-left {
+    width: 100%;
+  }
+
+  .landing-page-collection-blog-header-blog-list-right {
+    margin-top: 30px;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .landing-page-button-container {
+    width: 80%;
+  }
 }
