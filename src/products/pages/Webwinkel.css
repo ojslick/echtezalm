@@ -1,0 +1,88 @@
+.landing-page-container.webwinkel {
+  background: #0f0f0f;
+  text-align: center;
+}
+
+.landing-page-background-pic.webwinkel {
+  background: url('./images/webwinkelBackground.jpg'),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 570px;
+}
+
+.landing-page-collection-container.webwinkel {
+  background: #0f0f0f;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.product-card-container {
+  margin-top: 20px;
+}
+
+.webwinkel-products-remaning {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.webwinkel-products-remaning-left {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.webwinkel-products-remaning-right {
+  display: flex;
+}
+
+.webwinkel-products-remaning-right-sort-by {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+  margin-right: 10px;
+  color: #ffffff;
+}
+.landing-page-products.webwinkel {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.webwinkel-pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+.landing-page-collection-onze-collectie.webwinkel {
+  margin-top: 60px;
+}
+
+.webwinkel-line {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  width: 90%;
+  display: inline-block;
+}
+
+.landing-page-collection-edition.webwinkel {
+  margin-top: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .landing-page-collection-onze-collectie.webwinkel {
+    margin-top: 60px;
+  }
+}

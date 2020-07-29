@@ -1,5 +1,5 @@
 import React from 'react';
-import Select from 'react-select';
+import { connect } from 'react-redux';
 import countryList from 'react-select-country-list';
 
 import Input from '../../../shared/components/FormElements/Input';
@@ -16,14 +16,29 @@ class Register extends React.Component {
     options: countryList().getData(),
     value: null,
     type: false,
+    email: '',
+    password: '',
+    voornaam: '',
+    achternaam: '',
+    errors: '',
   };
 
   handleCountrySelect = (value) => {
     this.setState({ value });
   };
 
+  inputValue = (name, value) => {
+    this.setState({ [name]: value });
+  };
+
+  handleErrors = (errors) => {
+    this.setState({ errors: errors });
+  };
+
+  handleSubmit = () => {};
+
   render() {
-    console.log(this.state.value);
+    console.log(this.state);
     return (
       <div className="register-container">
         <h1 className="register-container-welkom">
@@ -45,12 +60,14 @@ class Register extends React.Component {
               placeholder="Voornaam"
               width="45%"
               name="voornaam"
+              inputValue={this.inputValue}
             />
             <Input
               type="text"
               placeholder="Achternaam"
               width="45%"
               name="achternaam"
+              inputValue={this.inputValue}
             />
           </div>
           <DrowDownInput
@@ -64,6 +81,8 @@ class Register extends React.Component {
             width="100%"
             name="email"
             marginTop="30px"
+            inputValue={this.inputValue}
+            handleErrors={this.handleErrors}
           />
           <Input
             type={this.state.type ? 'text' : 'password'}
@@ -73,6 +92,8 @@ class Register extends React.Component {
             marginTop="30px"
             onClick={() => this.setState({ type: !this.state.type })}
             icon={this.state.type ? eye : visible}
+            inputValue={this.inputValue}
+            handleErrors={this.handleErrors}
           />
           <p className="register-form-text">
             Ik ontvang graag het laatste Freshly Fish nieuws en weet wanneer de
@@ -85,6 +106,7 @@ class Register extends React.Component {
             background="#AD976E"
             color="white"
             border="none"
+            onClick={this.handleSubmit}
           />
         </div>
       </div>
@@ -92,4 +114,8 @@ class Register extends React.Component {
   }
 }
 
-export default Register;
+const mapStateToProps = (state) => {
+  return { inputState: state.inputState };
+};
+
+export default connect(mapStateToProps)(Register);

@@ -12,6 +12,7 @@ class Login extends React.Component {
   state = {
     type: false,
   };
+
   render() {
     return (
       <div className="login-container">

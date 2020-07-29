@@ -1,6 +1,5 @@
 import React from 'react';
 import Select from 'react-select';
-import countryList from 'react-select-country-list';
 
 import './DropDownInput.css';
 

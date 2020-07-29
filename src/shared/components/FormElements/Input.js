@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { inputData } from '../../../actions';
 
 import './Input.css';
 
@@ -17,6 +19,25 @@ class Input extends React.Component {
     },
     error: '',
   };
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if (this.state.email !== nextState.email) {
+  //     return false;
+  //   }
+  //   if (this.state.password !== nextState.password) {
+  //     return false;
+  //   }
+  //   if (this.state.voornaam !== nextState.voornaam) {
+  //     return false;
+  //   }
+  //   if (this.state.achternaam !== nextState.achternaam) {
+  //     return false;
+  //   }
+  //   if (this.state.errors !== nextState.errors) {
+  //     return false;
+  //   }
+  //   return true;
+  // }
 
   componentDidUpdate() {}
 
@@ -46,7 +67,10 @@ class Input extends React.Component {
       default:
         break;
     }
+
     this.setState({ [name]: value });
+    this.props.inputValue(name, value);
+    this.props.handleErrors(this.state.errors);
   }
 
   render() {
@@ -91,4 +115,4 @@ class Input extends React.Component {
   }
 }
 
-export default Input;
+export default connect(null, { inputData })(Input);

@@ -4,6 +4,8 @@
   padding: 57px 10%;
   display: flex;
   justify-content: space-between;
+  background-color: black;
+  text-align: start;
 }
 
 .footer-verbind {

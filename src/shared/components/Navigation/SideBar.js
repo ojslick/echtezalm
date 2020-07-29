@@ -1,5 +1,7 @@
 import React from 'react';
 
+import history from '../../../history';
+
 import cancel from './images/close.svg';
 
 import './SideBar.css';
@@ -21,7 +23,6 @@ class SideBar extends React.Component {
   render() {
     return (
       <React.Fragment>
-        >
         <div
           className={`ui sidebar ${this.visible()} inverted overlay animating right vertical menu`}
         >
@@ -36,7 +37,7 @@ class SideBar extends React.Component {
               className="item"
               onClick={async () => {
                 await this.props.handleClick();
-                // history.push('/help');
+                history.push('/');
               }}
             >
               Huis
@@ -45,7 +46,7 @@ class SideBar extends React.Component {
               className="item"
               onClick={async () => {
                 await this.props.handleClick();
-                // history.push('/help');
+                history.push('/verzameling');
               }}
             >
               Verzameling
@@ -54,7 +55,7 @@ class SideBar extends React.Component {
               className="item"
               onClick={async () => {
                 await this.props.handleClick();
-                // history.push('/help');
+                history.push('/webwinkel');
               }}
             >
               Webwinkel
@@ -63,7 +64,7 @@ class SideBar extends React.Component {
               className="item"
               onClick={async () => {
                 await this.props.handleClick();
-                // history.push('/help');
+                history.push('/overons');
               }}
             >
               Over ons
@@ -72,7 +73,7 @@ class SideBar extends React.Component {
               className="item"
               onClick={async () => {
                 await this.props.handleClick();
-                // history.push('/help');
+                history.push('/blog');
               }}
             >
               Blog
@@ -81,7 +82,7 @@ class SideBar extends React.Component {
               className="item"
               onClick={async () => {
                 await this.props.handleClick();
-                // history.push('/help');
+                history.push('/contact');
               }}
             >
               Contact

@@ -170,7 +170,12 @@ class MainNavigation extends React.Component {
                 isVisible={this.state.visible}
                 handleClick={() => this.toggleSideBar()}
               />
-              <img src={logo} alt="logo" className="logo-box" />
+              <img
+                src={logo}
+                alt="logo"
+                className="logo-box"
+                onClick={() => history.push('/')}
+              />
 
               <div className="right-menu-nav">
                 <div className="user-nav-dropdown">
@@ -212,7 +217,12 @@ class MainNavigation extends React.Component {
             </React.Fragment>
           ) : (
             <React.Fragment>
-              <img src={logo} alt="logo" className="logo-box" />
+              <img
+                src={logo}
+                alt="logo"
+                className="logo-box"
+                onClick={() => history.push('/')}
+              />
               <img src={cart} alt="cart-icon" className="cart-icon" />
             </React.Fragment>
           )}
@@ -220,7 +230,10 @@ class MainNavigation extends React.Component {
         <div className="nav-container">
           <p
             className={`${this.state.huis ? 'nav-text-active' : 'nav-text'}`}
-            onClick={() => this.handleClick('huis')}
+            onClick={() => {
+              this.handleClick('huis');
+              history.push('/');
+            }}
           >
             Huis
           </p>
@@ -228,7 +241,10 @@ class MainNavigation extends React.Component {
             className={`${
               this.state.verzameling ? 'nav-text-active' : 'nav-text'
             }`}
-            onClick={() => this.handleClick('verzameling')}
+            onClick={() => {
+              this.handleClick('verzameling');
+              history.push('/verzameling');
+            }}
           >
             Verzameling
           </p>
@@ -236,25 +252,37 @@ class MainNavigation extends React.Component {
             className={`${
               this.state.webwinkel ? 'nav-text-active' : 'nav-text'
             }`}
-            onClick={() => this.handleClick('webwinkel')}
+            onClick={() => {
+              this.handleClick('webwinkel');
+              history.push('/webwinkel');
+            }}
           >
             Webwinkel
           </p>
           <p
             className={`${this.state.overOns ? 'nav-text-active' : 'nav-text'}`}
-            onClick={() => this.handleClick('overOns')}
+            onClick={() => {
+              this.handleClick('overOns');
+              history.push('/overons');
+            }}
           >
             Over ons
           </p>
           <p
             className={`${this.state.blog ? 'nav-text-active' : 'nav-text'}`}
-            onClick={() => this.handleClick('blog')}
+            onClick={() => {
+              this.handleClick('blog');
+              history.push('/blog');
+            }}
           >
             Blog
           </p>
           <p
             className={`${this.state.contact ? 'nav-text-active' : 'nav-text'}`}
-            onClick={() => this.handleClick('contact')}
+            onClick={() => {
+              this.handleClick('contact');
+              history.push('/contact');
+            }}
           >
             Contact
           </p>

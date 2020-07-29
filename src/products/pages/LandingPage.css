@@ -135,7 +135,7 @@
 }
 
 .landing-page-collection-black-edition {
-  width: 31%;
+  width: 100%;
   height: 301px;
   background: url('./images/Rectangle\ 10.jpg'),
     linear-gradient(180deg, #ffffff 53.32%, #000000 135.38%);
@@ -149,7 +149,7 @@
 }
 
 .landing-page-collection-dutch-edition {
-  width: 31%;
+  width: 100%;
   height: 301px;
   background: url('./images/Rectangle\ 94.jpg'),
     linear-gradient(180deg, #ffffff 53.32%, #000000 135.38%);
@@ -163,7 +163,7 @@
 }
 
 .landing-page-collection-classic-edition {
-  width: 31%;
+  width: 100%;
   height: 301px;
   background: url('./images/Rectangle\ 12.jpg'),
     linear-gradient(180deg, #ffffff 53.32%, #000000 135.38%);
@@ -177,7 +177,6 @@
 }
 
 .landing-page-collection-black-edition-text {
-  position: absolute;
   font-family: Playfair Display;
   font-style: normal;
   font-weight: bold;
@@ -192,6 +191,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
 }
 
 .landing-page-line {
@@ -436,6 +436,12 @@
   height: 360px;
 }
 
+/* @media only screen and (max-width: 956px) {
+  .landing-page-products {
+    display: inline-block;
+  }
+} */
+
 @media only screen and (max-width: 768px) {
   .landing-page-red-bar-timer-text {
     font-size: 14px;
@@ -460,7 +466,9 @@
   }
 
   .landing-page-collection-edition {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    height: 950px;
   }
 
   .landing-page-collection-black-edition {
@@ -469,12 +477,10 @@
 
   .landing-page-collection-dutch-edition {
     width: 100%;
-    margin-top: 27px;
   }
 
   .landing-page-collection-classic-edition {
     width: 100%;
-    margin-top: 27px;
   }
 
   .landing-page-collection-onze-collectie.margintop {
