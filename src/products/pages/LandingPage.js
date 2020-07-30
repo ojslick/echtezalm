@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Edition from '../components/Edition';
 import ProductList from '../components/ProductList';
 import Button from '../../shared/components/UIElements/Button';
 import Footer from '../../shared/components/Footer/Footer';
@@ -15,6 +16,20 @@ import arrowRight from './images/arrowright.svg';
 import './LandingPage.css';
 
 class LandingPage extends React.Component {
+  state = { scrollHeight: '' };
+
+  componentDidMount() {
+    this.updateDimensions();
+    window.addEventListener('scroll', this.updateDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.updateDimensions);
+  }
+
+  updateDimensions = () => {
+    this.setState({ scrollHeight: window.scrollY });
+  };
   render() {
     return (
       <React.Fragment>
@@ -25,72 +40,70 @@ class LandingPage extends React.Component {
             </p>
           </div>
           <div className="landing-page-background-pic">
-            <h1 className="landing-page-background-pic-text">
+            <h1 className="landing-page-background-pic-text animate__animated animate__backInLeft ">
               Een bijzondere ervaring van smaak en traditie
             </h1>
-            <div className="landing-page-button-container">
+
+            <div className="landing-page-button-container animate__animated animate__backInRight">
               <Button
                 width="40%"
                 background="#FFFFFF"
                 color="black"
                 text="Begin"
                 border="none"
+                animated
               />
+
               <Button
                 width="40%"
                 background="#AD976E"
                 color="white"
                 text="Verzameling"
                 border="none"
+                animated
               />
             </div>
           </div>
           <div className="landing-page-collection-container">
             <div className="landing-page-collection-salmon">
-              <div className="landing-page-collection-salmon-left">
-                <h1 className="landing-page-collection-salmon-left-header">
-                  Echte zalm; een delicatesse of een mooi gelegenheidscadeau.
-                </h1>
-                <div className="landing-page-collection-salmon-left-text-box">
-                  <p className="landing-page-collection-salmon-left-text">
-                    Deze traditioneel gerookte zalm is een bijzondere beleving
-                    van smaak en traditie. Een zalm die anders wordt gerookt dan
-                    de koud gerookte zalm die je kent van speciaalzaken of
-                    supermarkten. Deze zalm is anders, lekkerder en exclusief.
-                    De traditionele manier van roken en stomen houdt in dat de
-                    zalm op de huid wordt gerookt bij een temperatuur van 80
-                    graden, waardoor zowel de structuur als de smaak van de zalm
-                    behouden blijft. Dit maakt de zalm tot een smakelijke,
-                    gezonde traktatie en een delicatesse van hoge kwaliteit voor
-                    iedereen die van sfeer en gezelligheid houdt; de
-                    Bourgondische manier van leven.
-                  </p>
+              {this.state.scrollHeight >= 424 && (
+                <div className="landing-page-collection-salmon-left animate__animated animate__flipInX ">
+                  <h1 className="landing-page-collection-salmon-left-header">
+                    Echte zalm; een delicatesse of een mooi gelegenheidscadeau.
+                  </h1>
+                  <div className="landing-page-collection-salmon-left-text-box">
+                    <p className="landing-page-collection-salmon-left-text">
+                      Deze traditioneel gerookte zalm is een bijzondere beleving
+                      van smaak en traditie. Een zalm die anders wordt gerookt
+                      dan de koud gerookte zalm die je kent van speciaalzaken of
+                      supermarkten. Deze zalm is anders, lekkerder en exclusief.
+                      De traditionele manier van roken en stomen houdt in dat de
+                      zalm op de huid wordt gerookt bij een temperatuur van 80
+                      graden, waardoor zowel de structuur als de smaak van de
+                      zalm behouden blijft. Dit maakt de zalm tot een
+                      smakelijke, gezonde traktatie en een delicatesse van hoge
+                      kwaliteit voor iedereen die van sfeer en gezelligheid
+                      houdt; de Bourgondische manier van leven.
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="landing-page-collection-salmon-right"></div>
+              )}
+              {this.state.scrollHeight >= 424 && (
+                <div className="landing-page-collection-salmon-right animate__animated animate__flipInX"></div>
+              )}
             </div>
-            <h1 className="landing-page-collection-onze-collectie">
-              Onze collectie
-            </h1>
-            <p className="landing-page-collection-onze-exclusieve">
-              Onze exclusieve collectie speciaal voor jou
-            </p>
+            <div style={{ marginTop: '190px' }}>
+              <h1 className="landing-page-collection-onze-collectie">
+                Onze collectie
+              </h1>
+              <p className="landing-page-collection-onze-exclusieve">
+                Onze exclusieve collectie speciaal voor jou
+              </p>
+            </div>
             <div className="landing-page-collection-edition">
-              <div className="landing-page-collection-black-edition">
-                <p className="landing-page-collection-black-edition-text">
-                  Black Edition
-                </p>
-              </div>
-              <div className="landing-page-collection-dutch-edition">
-                <p className="landing-page-collection-black-edition-text">
-                  Dutch Edition
-                </p>
-              </div>
-              <div className="landing-page-collection-classic-edition">
-                <p className="landing-page-collection-black-edition-text">
-                  Classic Edition
-                </p>
-              </div>
+              <Edition title="Black Edition" />
+              <Edition title="Dutch Edition" />
+              <Edition title="Classic Edition" />
             </div>
             <h1 className="landing-page-collection-onze-collectie margintop">
               Bekijk onze WebShop
@@ -98,8 +111,13 @@ class LandingPage extends React.Component {
             <p className="landing-page-collection-onze-exclusieve">
               Hier kunt u uw verse gerookte zalm bestellen
             </p>
-            <div className="landing-page-products">
-              <ProductList />
+            <div
+              className="landing-page-products"
+              style={{ minHeight: '450px' }}
+            >
+              {this.state.scrollHeight >= 1700 && (
+                <ProductList className="animate__animated animate__pulse" />
+              )}
             </div>
           </div>
           <div className="landing-page-line"></div>

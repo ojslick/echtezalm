@@ -14,7 +14,15 @@ class ProductList extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          width: '100%',
+          marginTop: '27px',
+        }}
+        className={this.props.className}
+      >
         <ProductItem
           src={product}
           productName="Product Name"
@@ -56,7 +64,7 @@ class ProductList extends React.Component {
           border="none"
           text="Voeg toe aan winkelkar"
         />
-      </React.Fragment>
+      </div>
     );
   }
 }

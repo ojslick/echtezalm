@@ -29,6 +29,7 @@ class Webwinkel extends React.Component {
               color="black"
               text="Winkel nu"
               border="none"
+              animated
             />
           </div>
         </div>
@@ -70,7 +71,7 @@ class Webwinkel extends React.Component {
           </div>
 
           <div className="webwinkel-pagination">
-            <Paginate />
+            <Paginate totalItemsCount={450} />
           </div>
         </div>
         <div className="webwinkel-line"></div>

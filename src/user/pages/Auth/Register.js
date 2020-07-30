@@ -14,31 +14,81 @@ import './Register.css';
 class Register extends React.Component {
   state = {
     options: countryList().getData(),
-    value: null,
+    country: null,
     type: false,
     email: '',
     password: '',
     voornaam: '',
     achternaam: '',
-    errors: '',
+    errors: {
+      email: '',
+      password: '',
+      voornaam: '',
+      message: '',
+      achternaam: '',
+    },
+    errorMessage: '',
   };
 
   handleCountrySelect = (value) => {
-    this.setState({ value });
+    this.setState({ country: value.label });
   };
 
   inputValue = (name, value) => {
     this.setState({ [name]: value });
   };
 
-  handleErrors = (errors) => {
-    this.setState({ errors: errors });
+  handleErrors = (name, error) => {
+    this.setState({ errors: { ...this.state.errors, [name]: error } });
   };
 
-  handleSubmit = () => {};
+  handleSubmit = async () => {
+    const validateForm = (errors) => {
+      const { country, voornaam, achternaam, email, password } = this.state;
+      let valid = true;
+      if ((country, voornaam, achternaam, email, password)) {
+        valid = true;
+      } else {
+        valid = false;
+      }
+      Object.values(errors).forEach((val) => val.length > 0 && (valid = false));
+
+      return valid;
+    };
+
+    if (validateForm(this.state.errors)) {
+      console.info('Valid Form');
+    } else {
+      console.error('Invalid Form');
+      this.setState({
+        errorMessage: 'Please fill the form correctly',
+      });
+    }
+
+    try {
+      const response = await fetch('http://localhost:5000/api/users/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          voornaam: this.state.voornaam,
+          achternaam: this.state.achternaam,
+          country: this.state.country,
+          email: this.state.email,
+          password: this.state.password,
+        }),
+      });
+
+      const responseData = await response.json();
+      console.log('responseData', responseData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   render() {
-    console.log(this.state);
+    const { errorMessage } = this.state;
     return (
       <div className="register-container">
         <h1 className="register-container-welkom">
@@ -61,6 +111,7 @@ class Register extends React.Component {
               width="45%"
               name="voornaam"
               inputValue={this.inputValue}
+              handleErrors={this.handleErrors}
             />
             <Input
               type="text"
@@ -68,6 +119,7 @@ class Register extends React.Component {
               width="45%"
               name="achternaam"
               inputValue={this.inputValue}
+              handleErrors={this.handleErrors}
             />
           </div>
           <DrowDownInput
@@ -95,10 +147,14 @@ class Register extends React.Component {
             inputValue={this.inputValue}
             handleErrors={this.handleErrors}
           />
+          {errorMessage.length > 0 && (
+            <span className="invalid-form-error">{errorMessage}</span>
+          )}
           <p className="register-form-text">
             Ik ontvang graag het laatste Freshly Fish nieuws en weet wanneer de
             volgende visdoos verschijnt!
           </p>
+
           <Button
             width="100%"
             marginTop="30px"

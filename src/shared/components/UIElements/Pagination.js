@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import Pagination from 'react-js-pagination';
 
 import './pagination.css';
@@ -26,8 +25,6 @@ class Paginate extends Component {
           totalItemsCount={this.props.totalItemsCount}
           pageRangeDisplayed={this.props.pageRangeDisplayed}
           onChange={this.handlePageChange.bind(this)}
-          temClass="page-item"
-          linkClass="page-link"
           innerClass="pagination-align"
           itemClass="pagination-item"
           linkClass="pagination-link"

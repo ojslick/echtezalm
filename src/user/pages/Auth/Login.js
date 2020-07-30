@@ -11,6 +11,51 @@ import './Login.css';
 class Login extends React.Component {
   state = {
     type: false,
+    email: '',
+    password: '',
+    errors: {
+      email: '',
+      password: '',
+      message: '',
+    },
+  };
+
+  inputValue = (name, value) => {
+    this.setState({ [name]: value });
+  };
+
+  handleErrors = (name, error) => {
+    this.setState({ errors: { ...this.state.errors, [name]: error } });
+  };
+
+  handleSubmit = () => {
+    const validateForm = (errors) => {
+      const { email, password } = this.state;
+
+      let valid = true;
+
+      if ((email, password)) {
+        valid = true;
+      } else {
+        valid = false;
+      }
+
+      Object.values(errors).forEach((val) => val.length > 0 && (valid = false));
+
+      return valid;
+    };
+
+    if (validateForm(this.state.errors)) {
+      console.info('Valid Form');
+    } else {
+      console.error('Invalid Form');
+      this.setState({
+        errors: {
+          ...this.state.errors,
+          message: 'Please fill the form correctly',
+        },
+      });
+    }
   };
 
   render() {
@@ -33,6 +78,8 @@ class Login extends React.Component {
             placeholder="jouw e-mailadres"
             width="100%"
             name="email"
+            inputValue={this.inputValue}
+            handleErrors={this.handleErrors}
           />
           <Input
             type={this.state.type ? 'text' : 'password'}
@@ -42,6 +89,8 @@ class Login extends React.Component {
             marginTop="30px"
             onClick={() => this.setState({ type: !this.state.type })}
             icon={this.state.type ? eye : visible}
+            inputValue={this.inputValue}
+            handleErrors={this.handleErrors}
           />
           <Button
             width="100%"
@@ -50,6 +99,7 @@ class Login extends React.Component {
             background="#AD976E"
             color="white"
             border="none"
+            onClick={this.handleSubmit}
           />
           <p className="login-form-forgot-password">Wachtwoord vergeten?</p>
           <div style={{ marginTop: '44px' }}>

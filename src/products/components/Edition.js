@@ -14,8 +14,8 @@ class Edition extends React.Component {
       //     {this.props.title}
       //   </p>
       // </div>
-      <div class="flip-card">
-        <div class="flip-card-inner">
+      <div className="flip-card">
+        <div className="flip-card-inner">
           <div
             className={`landing-page-collection-${this.props.title
               .split(' ')[0]
@@ -27,7 +27,7 @@ class Edition extends React.Component {
           </div>
 
           <div
-            class={`flip-card-back ${this.props.title
+            className={`flip-card-back ${this.props.title
               .split(' ')[0]
               .toLowerCase()}`}
           >

@@ -70,7 +70,7 @@ class Input extends React.Component {
 
     this.setState({ [name]: value });
     this.props.inputValue(name, value);
-    this.props.handleErrors(this.state.errors);
+    this.props.handleErrors(name, this.state.errors[name]);
   }
 
   render() {

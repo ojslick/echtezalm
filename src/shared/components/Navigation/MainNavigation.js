@@ -28,6 +28,25 @@ class MainNavigation extends React.Component {
 
   componentDidMount() {
     this.setState({ screenWidth: window.screen.width });
+
+    if (history.location.pathname === '/') {
+      this.setState({ huis: true });
+    }
+    if (history.location.pathname === '/verzameling') {
+      this.setState({ verzameling: true });
+    }
+    if (history.location.pathname === '/webwinkel') {
+      this.setState({ webwinkel: true });
+    }
+    if (history.location.pathname === '/overons') {
+      this.setState({ overOns: true });
+    }
+    if (history.location.pathname === '/blog') {
+      this.setState({ blog: true });
+    }
+    if (history.location.pathname === '/contact') {
+      this.setState({ contact: true });
+    }
   }
 
   toggleSideBar = (e) => {
