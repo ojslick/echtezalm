@@ -147,8 +147,10 @@ class Register extends React.Component {
             inputValue={this.inputValue}
             handleErrors={this.handleErrors}
           />
-          {errorMessage.length > 0 && (
+          {errorMessage.length > 0 ? (
             <span className="invalid-form-error">{errorMessage}</span>
+          ) : (
+            ''
           )}
           <p className="register-form-text">
             Ik ontvang graag het laatste Freshly Fish nieuws en weet wanneer de

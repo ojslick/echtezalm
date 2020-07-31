@@ -98,16 +98,20 @@ class Input extends React.Component {
             autoComplete="new-password"
           />
 
-          {this.props.icon && (
+          {this.props.icon ? (
             <img
               src={this.props.icon}
               alt="form-icon"
               className="form-input-icon"
               onClick={this.props.onClick}
             />
+          ) : (
+            ''
           )}
-          {errors[this.props.name].length > 0 && (
+          {errors[this.props.name].length > 0 ? (
             <span className="form-error">{errors[this.props.name]}</span>
+          ) : (
+            ''
           )}
         </div>
       </>
