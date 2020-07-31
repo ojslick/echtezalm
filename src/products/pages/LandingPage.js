@@ -87,10 +87,14 @@ class LandingPage extends React.Component {
                     </p>
                   </div>
                 </div>
-              ) : null}
+              ) : (
+                ''
+              )}
               {this.state.scrollHeight >= 424 ? (
                 <div className="landing-page-collection-salmon-right animate__animated animate__flipInX"></div>
-              ) : null}
+              ) : (
+                ''
+              )}
             </div>
             <div style={{ marginTop: '190px' }}>
               <h1 className="landing-page-collection-onze-collectie">
@@ -117,7 +121,9 @@ class LandingPage extends React.Component {
             >
               {this.state.scrollHeight >= 1700 ? (
                 <ProductList className="animate__animated animate__pulse" />
-              ) : null}
+              ) : (
+                ''
+              )}
             </div>
           </div>
           <div className="landing-page-line"></div>
