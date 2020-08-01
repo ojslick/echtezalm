@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { isLoggedIn } from '../../../actions';
 import SideBar from './SideBar';
 import history from '../../../history';
 
@@ -13,6 +14,8 @@ import order from './images/order.svg';
 import box from './images/box.svg';
 import logout from './images/logout.svg';
 import './Main-Navigation.css';
+
+let logoutTimer;
 
 class MainNavigation extends React.Component {
   state = {
@@ -28,9 +31,24 @@ class MainNavigation extends React.Component {
     close: false,
     screenWidth: '',
     visible: false,
+    token: null,
+    tokenExpirationDate: null,
   };
 
   componentDidMount() {
+    console.log('tcomp', this.props.loggedIn);
+    const storeData = JSON.parse(localStorage.getItem('userData'));
+    if (storeData && storeData.token && storeData.expiration) {
+      this.props.isLoggedIn({
+        token: storeData.userId,
+        userId: storeData.token,
+        expirationDate: new Date(storeData.expiration),
+      });
+    }
+    const tokenExpirationDate =
+      this.props.loggedIn.expirationDate ||
+      new Date(new Date().getTime() + 1000 * 60 * 60);
+    this.setState({ tokenExpirationDate: tokenExpirationDate });
     this.setState({ screenWidth: window.screen.width });
 
     if (history.location.pathname === '/') {
@@ -50,6 +68,22 @@ class MainNavigation extends React.Component {
     }
     if (history.location.pathname === '/contact') {
       this.setState({ contact: true });
+    }
+  }
+
+  logout = () => {
+    this.props.isLoggedIn({ token: '', userId: '' });
+    localStorage.removeItem('userData');
+    this.setState({ tokenExpirationDate: null });
+  };
+
+  componentDidUpdate() {
+    if (this.props.loggedIn.token && this.props.loggedIn.expirationDate) {
+      const remainingTime =
+        this.props.loggedIn.expirationDate.getTime() - new Date().getTime();
+      logoutTimer = setTimeout(this.logout, remainingTime);
+    } else {
+      clearTimeout(logoutTimer);
     }
   }
 
@@ -178,6 +212,7 @@ class MainNavigation extends React.Component {
   };
 
   render() {
+    console.log('time', this.state);
     return (
       <div className="main-nav-container">
         <div className="logo-container">
@@ -209,7 +244,7 @@ class MainNavigation extends React.Component {
                   }
                 >
                   <img src={user} alt="user-icon" className="user-icon" />
-                  {this.props.isLoggedIn ? (
+                  {this.props.loggedIn.token ? (
                     <ul
                       className={`${
                         this.state.close ? 'close-dropdown' : 'nav-dropdown'
@@ -400,7 +435,7 @@ class MainNavigation extends React.Component {
               >
             </div>
 
-            {this.props.isLoggedIn ? (
+            {this.props.loggedIn.token ? (
               <ul className="nav-dropdown">
                 <li
                   className={`${
@@ -462,6 +497,7 @@ class MainNavigation extends React.Component {
                   }`}
                   onClick={() => {
                     this.handleClick('mijnRekening');
+                    this.logout();
                   }}
                 >
                   <div style={{ display: 'flex' }}>
@@ -508,8 +544,8 @@ class MainNavigation extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('state', state);
-  return { isLoggedIn: state.isLoggedIn };
+  console.log('mapeee', state.isLoggedIn);
+  return { loggedIn: state.isLoggedIn };
 };
 
-export default connect(mapStateToProps)(MainNavigation);
+export default connect(mapStateToProps, { isLoggedIn })(MainNavigation);

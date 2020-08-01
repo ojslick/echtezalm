@@ -6,6 +6,10 @@ export const isLoggedIn = (data) => async (dispatch) => {
   dispatch({ type: 'IS_LOGGED_IN', payload: data });
 };
 
+export const updateLogin = (data) => async (dispatch) => {
+  dispatch({ type: 'UPDATE_LOGIN', payload: data });
+};
+
 // export const voornaam = (data) => async (dispatch) => {
 //   dispatch({ type: 'VOORNAAM', payload: data });
 // };

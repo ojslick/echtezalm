@@ -36,6 +36,7 @@ class Register extends React.Component {
 
   componentDidMount() {
     this._isMounted = true;
+    window.scrollTo(0, 0);
   }
 
   handleCountrySelect = (value) => {
@@ -94,11 +95,33 @@ class Register extends React.Component {
         throw new Error(responseData.message);
       }
       this.setState({ isLoading: false });
-      console.log(responseData.token);
-      this.props.isLoggedIn({
-        token: responseData.token,
-        userId: responseData.userId,
-      });
+      // this.props.isLoggedIn({
+      //   token: responseData.token,
+      //   userId: responseData.userId,
+      // });
+      const tokenExpirationDate = new Date(
+        new Date().getTime() + 1000 * 60 * 60
+      );
+      localStorage.setItem(
+        'userData',
+        JSON.stringify({
+          userId: responseData.userId,
+          token: responseData.token,
+          expiration: tokenExpirationDate.toISOString(),
+        })
+      );
+      const storeData = JSON.parse(localStorage.getItem('userData'));
+      if (
+        storeData &&
+        storeData.token &&
+        new Date(storeData.expiration) > new Date()
+      ) {
+        this.props.isLoggedIn({
+          token: storeData.userId,
+          userId: storeData.token,
+          expirationDate: new Date(storeData.expiration),
+        });
+      }
       history.push('/');
     } catch (err) {
       console.log(err);

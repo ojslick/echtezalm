@@ -25,6 +25,10 @@ class Login extends React.Component {
     isLoading: false,
   };
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   inputValue = (name, value) => {
     this.setState({ [name]: value });
   };
@@ -63,27 +67,54 @@ class Login extends React.Component {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/users/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: this.state.email,
-          password: this.state.password,
-        }),
-      });
+      const response = await fetch(
+        'https://echtezalm.herokuapp.com/api/users/login',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: this.state.email,
+            password: this.state.password,
+          }),
+        }
+      );
 
       const responseData = await response.json();
       if (!response.ok) {
         throw new Error(responseData.message);
       }
       this.setState({ isLoading: false });
-      console.log(responseData);
-      this.props.isLoggedIn({
-        token: responseData.token,
-        userId: responseData.userId,
-      });
+      // this.props.isLoggedIn({
+      //   token: responseData.token,
+      //   userId: responseData.userId,
+      // });
+      const tokenExpirationDate = new Date(
+        new Date().getTime() + 1000 * 60 * 60
+      );
+      localStorage.setItem(
+        'userData',
+        JSON.stringify({
+          userId: responseData.userId,
+          token: responseData.token,
+          expiration:
+            this.props.isLoggedIn.expirationDate ||
+            tokenExpirationDate.toISOString(),
+        })
+      );
+      const storeData = JSON.parse(localStorage.getItem('userData'));
+      if (
+        storeData &&
+        storeData.token &&
+        new Date(storeData.expiration) > new Date()
+      ) {
+        this.props.isLoggedIn({
+          token: storeData.userId,
+          userId: storeData.token,
+          expirationDate: new Date(storeData.expiration),
+        });
+      }
       history.push('/');
     } catch (err) {
       console.log(err);
@@ -170,4 +201,8 @@ class Login extends React.Component {
   }
 }
 
-export default connect(null, { isLoggedIn })(Login);
+const mapStateToProps = (state) => {
+  return { loggedIn: state.isLoggedIn };
+};
+
+export default connect(mapStateToProps, { isLoggedIn })(Login);

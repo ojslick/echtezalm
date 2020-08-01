@@ -13,30 +13,7 @@ import MainNavigation from './shared/components/Navigation/MainNavigation';
 class App extends React.Component {
   state = { token: false, userId: false };
 
-  componentDidMount() {
-    const storeData = JSON.parse(localStorage.getItem('userData'));
-
-    if (storeData && storeData.token) {
-      this.login(storeData.userId, storeData.token);
-    }
-  }
-
-  login = (uid, token) => {
-    this.setState({
-      token: uid,
-      userId: token,
-    });
-    localStorage.setItem(
-      'userData',
-      JSON.stringify({
-        userId: this.props.userId,
-        token: this.props.token,
-      })
-    );
-  };
-
   render() {
-    console.log('state', this.state);
     return (
       <Router history={history}>
         <MainNavigation />
@@ -55,4 +32,4 @@ const mapStateToProps = (state) => {
   return { token: state.isLoggedIn.token, userId: state.isLoggedIn.userId };
 };
 
-export default connect(null, { isLoggedIn })(App);
+export default connect(mapStateToProps, { isLoggedIn })(App);

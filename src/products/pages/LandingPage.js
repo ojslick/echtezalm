@@ -21,6 +21,7 @@ class LandingPage extends React.Component {
   componentDidMount() {
     this.updateDimensions();
     window.addEventListener('scroll', this.updateDimensions);
+    window.scrollTo(0, 0);
   }
 
   componentWillUnmount() {

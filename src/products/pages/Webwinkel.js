@@ -9,6 +9,9 @@ import './Webwinkel.css';
 import Footer from '../../shared/components/Footer/Footer';
 
 class Webwinkel extends React.Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
   render() {
     return (
       <div className="landing-page-container webwinkel">
