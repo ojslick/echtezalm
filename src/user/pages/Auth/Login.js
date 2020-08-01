@@ -68,7 +68,7 @@ class Login extends React.Component {
 
     try {
       const response = await fetch(
-        'https://echtezalm.herokuapp.com/api/users/login',
+        'https://distracted-lamport-e402f2.netlify.app/api/users/login',
         {
           method: 'POST',
           headers: {
