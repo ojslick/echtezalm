@@ -73,6 +73,7 @@ class Login extends React.Component {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://echtezalm.vercel.app',
           },
           body: JSON.stringify({
             email: this.state.email,
