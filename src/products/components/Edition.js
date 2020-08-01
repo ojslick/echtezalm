@@ -5,15 +5,6 @@ import './Edition.css';
 class Edition extends React.Component {
   render() {
     return (
-      // <div
-      //   className={`landing-page-collection-${this.props.title
-      //     .split(' ')[0]
-      //     .toLowerCase()}-edition`}
-      // >
-      //   <p className="landing-page-collection-black-edition-text">
-      //     {this.props.title}
-      //   </p>
-      // </div>
       <div className="flip-card">
         <div className="flip-card-inner">
           <div

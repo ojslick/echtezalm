@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux';
 import inputReducer from './inputReducer';
 
-export default combineReducers({ inputReducer });
+import isLoggedInReducer from './isLoggedInReducer';
+
+export default combineReducers({ inputReducer, isLoggedIn: isLoggedInReducer });

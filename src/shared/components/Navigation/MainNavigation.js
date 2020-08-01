@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import SideBar from './SideBar';
 import history from '../../../history';
@@ -7,7 +8,10 @@ import cart from './images/cart.svg';
 import user from './images/user.svg';
 import logo from './images/logo.svg';
 import menu from './images/menu.svg';
-
+import userSmall from './images/userSmall.svg';
+import order from './images/order.svg';
+import box from './images/box.svg';
+import logout from './images/logout.svg';
 import './Main-Navigation.css';
 
 class MainNavigation extends React.Component {
@@ -197,38 +201,99 @@ class MainNavigation extends React.Component {
               />
 
               <div className="right-menu-nav">
-                <div className="user-nav-dropdown">
+                <div
+                  className={
+                    this.props.isLoggedIn
+                      ? 'nav-container-align-arrow-down-logged-in'
+                      : 'nav-container-align-arrow-down'
+                  }
+                >
                   <img src={user} alt="user-icon" className="user-icon" />
-                  <ul
-                    className={`${
-                      this.state.close ? 'close-dropdown' : 'nav-dropdown'
-                    }`}
-                    style={{ marginTop: '10px' }}
-                  >
-                    <li
+                  {this.props.isLoggedIn ? (
+                    <ul
                       className={`${
-                        this.state.login ? 'nav-text-active' : 'nav-text'
+                        this.state.close ? 'close-dropdown' : 'nav-dropdown'
                       }`}
-                      onClick={() => {
-                        this.handleClick('mijnRekening');
-                        history.push('/login');
-                      }}
+                      style={{ marginTop: '10px', width: '100px' }}
                     >
-                      Log in
-                    </li>
-                    <li
+                      <li
+                        className={`${
+                          this.state.login ? 'nav-text-active' : 'nav-text'
+                        }`}
+                        onClick={() => {
+                          this.handleClick('mijnRekening');
+                          history.push('/my-account');
+                        }}
+                      >
+                        Account
+                      </li>
+                      <li
+                        className={`${
+                          this.state.login ? 'nav-text-active' : 'nav-text'
+                        }`}
+                        onClick={() => {
+                          this.handleClick('mijnRekening');
+                          history.push('/my-orders');
+                        }}
+                      >
+                        Orders
+                      </li>
+                      <li
+                        className={`${
+                          this.state.login ? 'nav-text-active' : 'nav-text'
+                        }`}
+                        onClick={() => {
+                          this.handleClick('mijnRekening');
+                          history.push('/my-subscription');
+                        }}
+                      >
+                        Subscription
+                      </li>
+                      <li
+                        className={`${
+                          this.state.login ? 'nav-text-active' : 'nav-text'
+                        }`}
+                        onClick={() => {
+                          this.handleClick('mijnRekening');
+                        }}
+                      >
+                        Log out
+                      </li>
+                    </ul>
+                  ) : (
+                    <ul
                       className={`${
-                        this.state.Inschrijven ? 'nav-text-active' : 'nav-text'
+                        this.state.close ? 'close-dropdown' : 'nav-dropdown'
                       }`}
-                      onClick={() => {
-                        this.handleClick('mijnRekening');
-                        history.push('/register');
-                      }}
                       style={{ marginTop: '10px' }}
                     >
-                      Inschrijven
-                    </li>
-                  </ul>
+                      <li
+                        className={`${
+                          this.state.login ? 'nav-text-active' : 'nav-text'
+                        }`}
+                        onClick={() => {
+                          this.handleClick('mijnRekening');
+                          history.push('/login');
+                        }}
+                      >
+                        Log in
+                      </li>
+                      <li
+                        className={`${
+                          this.state.Inschrijven
+                            ? 'nav-text-active'
+                            : 'nav-text'
+                        }`}
+                        onClick={() => {
+                          this.handleClick('mijnRekening');
+                          history.push('/register');
+                        }}
+                        style={{ marginTop: '10px' }}
+                      >
+                        Inschrijven
+                      </li>
+                    </ul>
+                  )}
                 </div>
 
                 <img src={cart} alt="cart-icon" className="cart-icon" />
@@ -305,7 +370,13 @@ class MainNavigation extends React.Component {
           >
             Contact
           </p>
-          <ul className="nav-container-align-arrow-down">
+          <ul
+            className={
+              this.props.isLoggedIn
+                ? 'nav-container-align-arrow-down-logged-in'
+                : 'nav-container-align-arrow-down'
+            }
+          >
             <li
               className={`${
                 this.state.mijnRekening ? 'nav-text-active' : 'nav-text'
@@ -329,30 +400,106 @@ class MainNavigation extends React.Component {
               >
             </div>
 
-            <ul className="nav-dropdown">
-              <li
-                className={`${
-                  this.state.login ? 'nav-text-active' : 'nav-text'
-                }`}
-                onClick={() => {
-                  this.handleClick('mijnRekening');
-                  history.push('/login');
-                }}
-              >
-                Log in
-              </li>
-              <li
-                className={`${
-                  this.state.Inschrijven ? 'nav-text-active' : 'nav-text'
-                }`}
-                onClick={() => {
-                  this.handleClick('mijnRekening');
-                  history.push('/register');
-                }}
-              >
-                Inschrijven
-              </li>
-            </ul>
+            {this.props.isLoggedIn ? (
+              <ul className="nav-dropdown">
+                <li
+                  className={`${
+                    this.state.login ? 'nav-text-active' : 'nav-text'
+                  }`}
+                  onClick={() => {
+                    this.handleClick('mijnRekening');
+                    history.push('/my-account');
+                  }}
+                >
+                  <div style={{ display: 'flex' }}>
+                    <img
+                      src={userSmall}
+                      alt="user-icon"
+                      style={{ marginRight: '10px' }}
+                    />
+                    <p className="">My Account</p>
+                  </div>
+                </li>
+                <li
+                  className={`${
+                    this.state.login ? 'nav-text-active' : 'nav-text'
+                  }`}
+                  onClick={() => {
+                    this.handleClick('mijnRekening');
+                    history.push('/my-orders');
+                  }}
+                >
+                  <div style={{ display: 'flex' }}>
+                    <img
+                      src={order}
+                      alt="user-icon"
+                      style={{ marginRight: '10px' }}
+                    />
+                    <p className="">My Orders</p>
+                  </div>
+                </li>
+                <li
+                  className={`${
+                    this.state.login ? 'nav-text-active' : 'nav-text'
+                  }`}
+                  onClick={() => {
+                    this.handleClick('mijnRekening');
+                    history.push('/my-subscription');
+                  }}
+                >
+                  <div style={{ display: 'flex' }}>
+                    <img
+                      src={box}
+                      alt="user-icon"
+                      style={{ marginRight: '10px' }}
+                    />
+                    <p className="">My Subscription</p>
+                  </div>
+                </li>
+                <li
+                  className={`${
+                    this.state.login ? 'nav-text-active' : 'nav-text'
+                  }`}
+                  onClick={() => {
+                    this.handleClick('mijnRekening');
+                  }}
+                >
+                  <div style={{ display: 'flex' }}>
+                    <img
+                      src={logout}
+                      alt="user-icon"
+                      style={{ marginRight: '10px' }}
+                    />
+                    <p className="">Log out</p>
+                  </div>
+                </li>
+              </ul>
+            ) : (
+              <ul className="nav-dropdown" style={{ display: 'inline-block' }}>
+                <li
+                  className={`${
+                    this.state.login ? 'nav-text-active' : 'nav-text'
+                  }`}
+                  onClick={() => {
+                    this.handleClick('mijnRekening');
+                    history.push('/login');
+                  }}
+                >
+                  Log in
+                </li>
+                <li
+                  className={`${
+                    this.state.Inschrijven ? 'nav-text-active' : 'nav-text'
+                  }`}
+                  onClick={() => {
+                    this.handleClick('mijnRekening');
+                    history.push('/register');
+                  }}
+                >
+                  Inschrijven
+                </li>
+              </ul>
+            )}
           </ul>
         </div>
       </div>
@@ -360,4 +507,9 @@ class MainNavigation extends React.Component {
   }
 }
 
-export default MainNavigation;
+const mapStateToProps = (state) => {
+  console.log('state', state);
+  return { isLoggedIn: state.isLoggedIn };
+};
+
+export default connect(mapStateToProps)(MainNavigation);

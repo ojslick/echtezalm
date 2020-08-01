@@ -1,7 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
+import { isLoggedIn } from '../../../actions';
 import Input from '../../../shared/components/FormElements/Input';
 import Button from '../../../shared/components/UIElements/Button';
+import LoadingSpinner from '../../../shared/components/UIElements/LoadingSpinner';
 import history from '../../../history';
 import visible from './Images/visible.svg';
 import eye from './Images/eye.svg';
@@ -18,6 +21,8 @@ class Login extends React.Component {
       password: '',
       message: '',
     },
+    errorMessage: '',
+    isLoading: false,
   };
 
   inputValue = (name, value) => {
@@ -28,7 +33,7 @@ class Login extends React.Component {
     this.setState({ errors: { ...this.state.errors, [name]: error } });
   };
 
-  handleSubmit = () => {
+  handleSubmit = async () => {
     const validateForm = (errors) => {
       const { email, password } = this.state;
 
@@ -56,9 +61,41 @@ class Login extends React.Component {
         },
       });
     }
+
+    try {
+      const response = await fetch('http://localhost:5000/api/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: this.state.email,
+          password: this.state.password,
+        }),
+      });
+
+      const responseData = await response.json();
+      if (!response.ok) {
+        throw new Error(responseData.message);
+      }
+      this.setState({ isLoading: false });
+      console.log(responseData);
+      this.props.isLoggedIn({
+        token: responseData.token,
+        userId: responseData.userId,
+      });
+      history.push('/');
+    } catch (err) {
+      console.log(err);
+      this.setState({ isLoading: false });
+      this.setState({
+        errorMessage: err.message || 'Something went wrong, please try again.',
+      });
+    }
   };
 
   render() {
+    const { errorMessage } = this.state;
     return (
       <div className="login-container">
         <h1 className="login-container-welkom">Welkom terug</h1>
@@ -92,6 +129,11 @@ class Login extends React.Component {
             inputValue={this.inputValue}
             handleErrors={this.handleErrors}
           />
+          {errorMessage.length > 0 ? (
+            <span className="invalid-form-error">{errorMessage}</span>
+          ) : (
+            ''
+          )}
           <Button
             width="100%"
             marginTop="30px"
@@ -101,6 +143,11 @@ class Login extends React.Component {
             border="none"
             onClick={this.handleSubmit}
           />
+          {this.state.isLoading && (
+            <div style={{ marginTop: '27px', width: '100%' }}>
+              <LoadingSpinner />
+            </div>
+          )}
           <p className="login-form-forgot-password">Wachtwoord vergeten?</p>
           <div style={{ marginTop: '44px' }}>
             <p className="login-form-door-verder">
@@ -123,4 +170,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default connect(null, { isLoggedIn })(Login);

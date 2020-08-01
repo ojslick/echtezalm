@@ -2,9 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import countryList from 'react-select-country-list';
 
+import { isLoggedIn } from '../../../actions';
 import Input from '../../../shared/components/FormElements/Input';
 import DrowDownInput from '../../../shared/components/FormElements/DropDownInput';
 import Button from '../../../shared/components/UIElements/Button';
+import LoadingSpinner from '../../../shared/components/UIElements/LoadingSpinner';
 import history from '../../../history';
 import visible from './Images/visible.svg';
 import eye from './Images/eye.svg';
@@ -12,6 +14,7 @@ import eye from './Images/eye.svg';
 import './Register.css';
 
 class Register extends React.Component {
+  _isMounted = false;
   state = {
     options: countryList().getData(),
     country: null,
@@ -28,7 +31,12 @@ class Register extends React.Component {
       achternaam: '',
     },
     errorMessage: '',
+    isLoading: false,
   };
+
+  componentDidMount() {
+    this._isMounted = true;
+  }
 
   handleCountrySelect = (value) => {
     this.setState({ country: value.label });
@@ -43,6 +51,7 @@ class Register extends React.Component {
   };
 
   handleSubmit = async () => {
+    this._isMounted = true;
     const validateForm = (errors) => {
       const { country, voornaam, achternaam, email, password } = this.state;
       let valid = true;
@@ -64,8 +73,8 @@ class Register extends React.Component {
         errorMessage: 'Please fill the form correctly',
       });
     }
-
     try {
+      this.setState({ isLoading: true });
       const response = await fetch('http://localhost:5000/api/users/register', {
         method: 'POST',
         headers: {
@@ -81,10 +90,24 @@ class Register extends React.Component {
       });
 
       const responseData = await response.json();
-      console.log('responseData', responseData);
+      if (!response.ok) {
+        throw new Error(responseData.message);
+      }
+      this.setState({ isLoading: false });
+      console.log(responseData.token);
+      this.props.isLoggedIn({
+        token: responseData.token,
+        userId: responseData.userId,
+      });
+      history.push('/');
     } catch (err) {
       console.log(err);
+      this.setState({ isLoading: false });
+      this.setState({
+        errorMessage: err.message || 'Something went wrong, please try again.',
+      });
     }
+    this.setState({ isLoading: false });
   };
 
   render() {
@@ -166,6 +189,11 @@ class Register extends React.Component {
             border="none"
             onClick={this.handleSubmit}
           />
+          {this.state.isLoading && (
+            <div style={{ marginTop: '27px', width: '100%' }}>
+              <LoadingSpinner />
+            </div>
+          )}
         </div>
       </div>
     );
@@ -176,4 +204,4 @@ const mapStateToProps = (state) => {
   return { inputState: state.inputState };
 };
 
-export default connect(mapStateToProps)(Register);
+export default connect(mapStateToProps, { isLoggedIn })(Register);

@@ -2,6 +2,10 @@ export const inputData = (data) => async (dispatch) => {
   dispatch({ type: 'INPUT_DATA', payload: data });
 };
 
+export const isLoggedIn = (data) => async (dispatch) => {
+  dispatch({ type: 'IS_LOGGED_IN', payload: data });
+};
+
 // export const voornaam = (data) => async (dispatch) => {
 //   dispatch({ type: 'VOORNAAM', payload: data });
 // };
