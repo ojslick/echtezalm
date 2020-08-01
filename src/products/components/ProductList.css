@@ -1,0 +1,12 @@
+.product-list {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 27px;
+}
+
+@media only screen and (max-width: 768px) {
+  .product-list {
+    display: inline-block;
+  }
+}

@@ -14,15 +14,7 @@ class ProductList extends React.Component {
 
   render() {
     return (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          width: '100%',
-          marginTop: '27px',
-        }}
-        className={this.props.className}
-      >
+      <div className={`product-list ${this.props.className}`}>
         <ProductItem
           src={product}
           productName="Product Name"

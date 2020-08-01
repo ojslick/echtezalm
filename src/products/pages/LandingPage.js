@@ -96,7 +96,7 @@ class LandingPage extends React.Component {
                 ''
               )}
             </div>
-            <div style={{ marginTop: '190px' }}>
+            <div style={{ marginTop: '83px' }}>
               <h1 className="landing-page-collection-onze-collectie">
                 Onze collectie
               </h1>
