@@ -68,12 +68,11 @@ class Login extends React.Component {
 
     try {
       const response = await fetch(
-        'https://echtezalm.herokuapp.com/api/users/login',
+        `${process.env.REACT_APP_BACKEND_URL}/users/login`,
         {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': 'https://echtezalm.vercel.app',
           },
           body: JSON.stringify({
             email: this.state.email,

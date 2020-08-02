@@ -76,19 +76,22 @@ class Register extends React.Component {
     }
     try {
       this.setState({ isLoading: true });
-      const response = await fetch('http://localhost:5000/api/users/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          voornaam: this.state.voornaam,
-          achternaam: this.state.achternaam,
-          country: this.state.country,
-          email: this.state.email,
-          password: this.state.password,
-        }),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/users/register`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            voornaam: this.state.voornaam,
+            achternaam: this.state.achternaam,
+            country: this.state.country,
+            email: this.state.email,
+            password: this.state.password,
+          }),
+        }
+      );
 
       const responseData = await response.json();
       if (!response.ok) {
