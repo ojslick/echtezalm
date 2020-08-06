@@ -1,5 +1,7 @@
 import React from 'react';
 
+import collection from './images/collection.jpg';
+
 import './Edition.css';
 
 class Edition extends React.Component {
@@ -7,21 +9,21 @@ class Edition extends React.Component {
     return (
       <div className="flip-card">
         <div className="flip-card-inner">
-          <div
-            className={`landing-page-collection-${this.props.title
-              .split(' ')[0]
-              .toLowerCase()}-edition flip-card-front`}
-          >
-            <p className="landing-page-collection-black-edition-text">
-              {this.props.title}
-            </p>
+          <div className="flip-card-front flip-card-image ">
+            <img
+              src={collection}
+              alt="collection"
+              className="flip-card-image-img"
+            />
+            <p className="flip-card-front-title">{this.props.title}</p>
           </div>
 
-          <div
-            className={`flip-card-back ${this.props.title
-              .split(' ')[0]
-              .toLowerCase()}`}
-          >
+          <div className="flip-card-back flip-card-image">
+            <img
+              src={collection}
+              alt="collection"
+              className="flip-card-image-img-back"
+            />
             <h1 className="flip-card-back-title">{this.props.title}</h1>
           </div>
         </div>

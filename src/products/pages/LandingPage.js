@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Edition from '../components/Edition';
+import EditionList from '../components/EditionList';
 import ProductList from '../components/ProductList';
 import Button from '../../shared/components/UIElements/Button';
 import Footer from '../../shared/components/Footer/Footer';
@@ -106,9 +106,7 @@ class LandingPage extends React.Component {
               </p>
             </div>
             <div className="landing-page-collection-edition">
-              <Edition title="Black Edition" />
-              <Edition title="Dutch Edition" />
-              <Edition title="Classic Edition" />
+              <EditionList />
             </div>
             <h1 className="landing-page-collection-onze-collectie margintop">
               Bekijk onze WebShop
