@@ -1,0 +1,234 @@
+.product-page-container {
+  width: 100%;
+  padding: 50px 10% 10% 100px;
+  background: #0f0f0f;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.product-page-back {
+  display: flex;
+  justify-content: space-between;
+  width: 60px;
+  cursor: pointer;
+}
+
+.product-page-back-text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+
+  color: #dac08e;
+}
+
+.product-page-pictures {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 29px;
+}
+
+.product-page-pictures-left {
+  width: 45%;
+}
+
+.product-page-pictures-right {
+  width: 45%;
+  text-align: left;
+}
+
+.product-page-pictures-left-displayed-pic-container {
+}
+
+.product-page-pictures-left-displayed-pic {
+  display: block;
+  max-width: 100%;
+  max-height: 434px;
+  width: auto;
+  height: auto;
+}
+
+.product-page-pictures-left-small-pics-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.product-page-pictures-left-small-pics {
+  display: block;
+  max-width: 32%;
+  max-height: 138px;
+  width: auto;
+  height: auto;
+}
+
+.product-page-pictures-right-product-title {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 42px;
+  letter-spacing: 0.05em;
+  margin-top: 15px !important;
+  color: #ffffff;
+}
+
+.product-page-pictures-right-product-description-container {
+  color: #dac08e;
+  list-style: square;
+}
+
+.product-page-pictures-right-product-description {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.product-page-pictures-right-product-price {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 37px;
+  letter-spacing: 0.05em;
+  margin-top: 67px !important;
+  color: #dac08e;
+}
+
+.product-page-pictures-right-product-add-to-cart {
+  width: 70%;
+  height: 51px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 19px;
+  align-items: center;
+}
+
+.product-page-pictures-right-product-add-to-cart-left {
+  width: 30%;
+}
+
+.product-page-pictures-right-product-add-to-cart-left-counter {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-page-pictures-right-product-add-to-cart-left-counter-number {
+  width: 40px;
+  height: 40px;
+  columns: white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
+  border-radius: 3px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.product-page-pictures-right-product-toggle-review {
+  margin-top: 62px;
+  width: 363px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-page-pictures-right-product-toggle-review-or-description {
+  width: 60%;
+  text-align: start;
+}
+
+.product-page-pictures-right-product-toggle-review-or-description-text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.05em;
+  margin-top: 30px !important;
+  color: #ffffff;
+}
+
+.product-page-pictures-right-product-toggle-review-or-description-reviews {
+  width: 100%;
+  margin-top: 46px;
+}
+
+.product-page-pictures-right-product-toggle-review-or-description-reviews-name {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.05em;
+  margin-top: 20px !important;
+  color: #ffffff;
+}
+
+.product-page-pictures-right-product-toggle-review-or-description-reviews-text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.star-list > span {
+  margin-left: 0 !important;
+  margin-right: 10px !important;
+}
+
+.product-page-pictures-right-product-toggle-review-line {
+  width: 100%;
+  margin-top: 23px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.product-page-pictures-right-product-toggle-review-or-description-reviews-date {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 22px;
+  margin-top: 20px;
+  color: #ffffff;
+}
+
+.product-page-pictures-right-product-toggle-review-or-description-reviews-by {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.product-page-product-list {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

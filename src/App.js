@@ -9,6 +9,7 @@ import MainNavigation from './shared/components/Navigation/MainNavigation';
 import LoadingSpinner from './shared/components/UIElements/LoadingSpinner';
 
 const Webwinkel = React.lazy(() => import('./products/pages/Webwinkel'));
+const Product = React.lazy(() => import('./products/pages/Product'));
 const Login = React.lazy(() => import('./user/pages/Auth/Login'));
 const Register = React.lazy(() => import('./user/pages/Auth/Register'));
 
@@ -25,6 +26,7 @@ class App extends React.Component {
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
             <Route path="/webwinkel" exact component={Webwinkel} />
+            <Route path="/webwinkel/product" exact component={Product} />
           </Switch>
         </Suspense>
       </Router>

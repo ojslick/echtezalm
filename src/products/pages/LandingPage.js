@@ -4,6 +4,7 @@ import EditionList from '../components/EditionList';
 import ProductList from '../components/ProductList';
 import Button from '../../shared/components/UIElements/Button';
 import Footer from '../../shared/components/Footer/Footer';
+import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 
 import openIcon from './images/open.svg';
 import sushi from './images/sushi.svg';
@@ -16,12 +17,76 @@ import arrowRight from './images/arrowright.svg';
 import './LandingPage.css';
 
 class LandingPage extends React.Component {
-  state = { scrollHeight: '' };
+  state = { scrollHeight: '', products: [], collection: [], blogs: [] };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.updateDimensions();
     window.addEventListener('scroll', this.updateDimensions);
     window.scrollTo(0, 0);
+
+    const fetchProducts = async () => {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/products/`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        throw new Error(responseData.message);
+      }
+
+      this.setState({ products: responseData.products });
+    };
+
+    const fetchCollection = async () => {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/collection/`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        throw new Error(responseData.message);
+      }
+
+      this.setState({ collection: responseData.collection });
+    };
+
+    const fetchBlogs = async () => {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/blogs/`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        throw new Error(responseData.message);
+      }
+
+      this.setState({ blogs: responseData.blogs });
+    };
+
+    fetchBlogs();
+    fetchProducts();
+    fetchCollection();
   }
 
   componentWillUnmount() {
@@ -106,7 +171,15 @@ class LandingPage extends React.Component {
               </p>
             </div>
             <div className="landing-page-collection-edition">
-              <EditionList />
+              {this.state.collection[0] ? (
+                this.state.collection.map((collection) => (
+                  <EditionList key={collection.id} name={collection.name} />
+                ))
+              ) : (
+                <div className="edition-list-loading-spinner">
+                  <LoadingSpinner container />
+                </div>
+              )}
             </div>
             <h1 className="landing-page-collection-onze-collectie margintop">
               Bekijk onze WebShop
@@ -119,7 +192,22 @@ class LandingPage extends React.Component {
               style={{ minHeight: '450px' }}
             >
               {this.state.scrollHeight >= 1700 ? (
-                <ProductList className="animate__animated animate__pulse" />
+                <>
+                  {this.state.products[0] ? (
+                    this.state.products.map((product) => (
+                      <ProductList
+                        className="animate__animated animate__pulse"
+                        key={product.id}
+                        price={product.price}
+                        name={product.name}
+                      />
+                    ))
+                  ) : (
+                    <div style={{ marginTop: '72px', height: '424px' }}>
+                      <LoadingSpinner container />
+                    </div>
+                  )}
+                </>
               ) : (
                 ''
               )}
@@ -236,110 +324,33 @@ class LandingPage extends React.Component {
 
             <div className="landing-page-collection-blog-header-blog-list-container">
               <div className="landing-page-collection-blog-header-blog-list-left">
-                <div className="landing-page-collection-blog-header-blog-list-item">
-                  <div className="landing-page-collection-blog-header-blog-list-item-date">
-                    <p className="landing-page-collection-blog-header-blog-list-item-date-day">
-                      20
-                    </p>
-                    <p className="landing-page-collection-blog-header-blog-list-item-date-month">
-                      Aug
-                    </p>
+                {this.state.blogs[0] ? (
+                  this.state.blogs.slice(0, 6).map((blog) => (
+                    <div
+                      className="landing-page-collection-blog-header-blog-list-item"
+                      key={blog.id}
+                    >
+                      <div className="landing-page-collection-blog-header-blog-list-item-date">
+                        <p className="landing-page-collection-blog-header-blog-list-item-date-day">
+                          {blog.date.split(' ')[0]}
+                        </p>
+                        <p className="landing-page-collection-blog-header-blog-list-item-date-month">
+                          {blog.date.split(' ')[1].slice(0, 3)}
+                        </p>
+                      </div>
+                      <div className="landing-page-collection-blog-header-blog-list-item-bar"></div>
+                      <div className="landing-page-collection-blog-header-blog-list-item-text-box">
+                        <p className="landing-page-collection-blog-header-blog-list-item-text">
+                          {blog.title}
+                        </p>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <div style={{ marginTop: '72px', height: '424px' }}>
+                    <LoadingSpinner container />
                   </div>
-                  <div className="landing-page-collection-blog-header-blog-list-item-bar"></div>
-                  <div className="landing-page-collection-blog-header-blog-list-item-text-box">
-                    <p className="landing-page-collection-blog-header-blog-list-item-text">
-                      44 gezondheidsvoordelen van het eten van zalm met Bruine
-                      rijst en het recept en de beste koks die er zijn.
-                    </p>
-                  </div>
-                </div>
-                <div className="landing-page-collection-blog-header-blog-list-item">
-                  <div className="landing-page-collection-blog-header-blog-list-item-date">
-                    <p className="landing-page-collection-blog-header-blog-list-item-date-day">
-                      20
-                    </p>
-                    <p className="landing-page-collection-blog-header-blog-list-item-date-month">
-                      Aug
-                    </p>
-                  </div>
-                  <div className="landing-page-collection-blog-header-blog-list-item-bar"></div>
-                  <div className="landing-page-collection-blog-header-blog-list-item-text-box">
-                    <p className="landing-page-collection-blog-header-blog-list-item-text">
-                      44 gezondheidsvoordelen van het eten van zalm met Bruine
-                      rijst en het recept en de beste koks die er zijn.
-                    </p>
-                  </div>
-                </div>
-                <div className="landing-page-collection-blog-header-blog-list-item">
-                  <div className="landing-page-collection-blog-header-blog-list-item-date">
-                    <p className="landing-page-collection-blog-header-blog-list-item-date-day">
-                      20
-                    </p>
-                    <p className="landing-page-collection-blog-header-blog-list-item-date-month">
-                      Aug
-                    </p>
-                  </div>
-                  <div className="landing-page-collection-blog-header-blog-list-item-bar"></div>
-                  <div className="landing-page-collection-blog-header-blog-list-item-text-box">
-                    <p className="landing-page-collection-blog-header-blog-list-item-text">
-                      44 gezondheidsvoordelen van het eten van zalm met Bruine
-                      rijst en het recept en de beste koks die er zijn.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="landing-page-collection-blog-header-blog-list-right">
-                <div className="landing-page-collection-blog-header-blog-list-item">
-                  <div className="landing-page-collection-blog-header-blog-list-item-date">
-                    <p className="landing-page-collection-blog-header-blog-list-item-date-day">
-                      20
-                    </p>
-                    <p className="landing-page-collection-blog-header-blog-list-item-date-month">
-                      Aug
-                    </p>
-                  </div>
-                  <div className="landing-page-collection-blog-header-blog-list-item-bar"></div>
-                  <div className="landing-page-collection-blog-header-blog-list-item-text-box">
-                    <p className="landing-page-collection-blog-header-blog-list-item-text">
-                      44 gezondheidsvoordelen van het eten van zalm met Bruine
-                      rijst en het recept en de beste koks die er zijn.
-                    </p>
-                  </div>
-                </div>
-                <div className="landing-page-collection-blog-header-blog-list-item">
-                  <div className="landing-page-collection-blog-header-blog-list-item-date">
-                    <p className="landing-page-collection-blog-header-blog-list-item-date-day">
-                      20
-                    </p>
-                    <p className="landing-page-collection-blog-header-blog-list-item-date-month">
-                      Aug
-                    </p>
-                  </div>
-                  <div className="landing-page-collection-blog-header-blog-list-item-bar"></div>
-                  <div className="landing-page-collection-blog-header-blog-list-item-text-box">
-                    <p className="landing-page-collection-blog-header-blog-list-item-text">
-                      44 gezondheidsvoordelen van het eten van zalm met Bruine
-                      rijst en het recept en de beste koks die er zijn.
-                    </p>
-                  </div>
-                </div>
-                <div className="landing-page-collection-blog-header-blog-list-item">
-                  <div className="landing-page-collection-blog-header-blog-list-item-date">
-                    <p className="landing-page-collection-blog-header-blog-list-item-date-day">
-                      20
-                    </p>
-                    <p className="landing-page-collection-blog-header-blog-list-item-date-month">
-                      Aug
-                    </p>
-                  </div>
-                  <div className="landing-page-collection-blog-header-blog-list-item-bar"></div>
-                  <div className="landing-page-collection-blog-header-blog-list-item-text-box">
-                    <p className="landing-page-collection-blog-header-blog-list-item-text">
-                      44 gezondheidsvoordelen van het eten van zalm met Bruine
-                      rijst en het recept en de beste koks die er zijn.
-                    </p>
-                  </div>
-                </div>
+                )}
               </div>
             </div>
           </div>

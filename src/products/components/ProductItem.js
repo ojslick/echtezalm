@@ -1,5 +1,6 @@
 import React from 'react';
 
+import history from '../../history';
 import Button from '../../shared/components/UIElements/Button';
 
 import './ProductItem.css';
@@ -7,7 +8,11 @@ import './ProductItem.css';
 class ProductItem extends React.Component {
   render() {
     return (
-      <div className="product-card-container">
+      <div
+        className="product-card-container"
+        onClick={() => history.push('/webwinkel/product')}
+        style={{ cursor: 'pointer' }}
+      >
         <img src={this.props.src} alt="product" className="product-card" />
         <div className="product-card-body">
           <>
