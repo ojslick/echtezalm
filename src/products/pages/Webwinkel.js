@@ -1,16 +1,62 @@
 import React from 'react';
 
+import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import Button from '../../shared/components/UIElements/Button';
 import Paginate from '../../shared/components/UIElements/Pagination';
 import ProductList from '../components/ProductList';
-import Edition from '../components/Edition';
+import EditionList from '../components/EditionList';
 
 import './Webwinkel.css';
 import Footer from '../../shared/components/Footer/Footer';
 
 class Webwinkel extends React.Component {
+  state = { products: [], collection: [] };
+
   componentDidMount() {
     window.scrollTo(0, 0);
+
+    const fetchProducts = async () => {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/products/`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        throw new Error(responseData.message);
+      }
+
+      this.setState({ products: responseData.products });
+    };
+
+    const fetchCollection = async () => {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/collection/`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        throw new Error(responseData.message);
+      }
+
+      this.setState({ collection: responseData.collection });
+    };
+
+    fetchProducts();
+    fetchCollection();
   }
   render() {
     return (
@@ -25,6 +71,7 @@ class Webwinkel extends React.Component {
           <div
             className="landing-page-button-container animate__animated animate__backInUp"
             style={{ justifyContent: 'center' }}
+            onClick={() => window.scrollTo(0, 900)}
           >
             <Button
               width="198px"
@@ -74,11 +121,46 @@ class Webwinkel extends React.Component {
             </div>
           </div>
           <div className="landing-page-products">
-            <ProductList />
+            <div
+              className="landing-page-products"
+              style={{ minHeight: '450px' }}
+            >
+              <>
+                {this.state.products[0] ? (
+                  this.state.products.map((product) => (
+                    <div
+                      className="animate__animated animate__pulse"
+                      key={product.id}
+                    >
+                      <ProductList
+                        key={product.id}
+                        price={product.price}
+                        name={product.name}
+                        prod={product}
+                      />
+                    </div>
+                  ))
+                ) : (
+                  <div
+                    style={{
+                      marginTop: '72px',
+                      height: '424px',
+                      width: '265px',
+                    }}
+                  >
+                    <LoadingSpinner container />
+                  </div>
+                )}
+              </>
+            </div>
           </div>
 
           <div className="webwinkel-pagination">
-            <Paginate totalItemsCount={450} />
+            <Paginate
+              totalItemsCount={this.state.products.length}
+              itemsCountPerPage={12}
+              pageRangeDisplayed={5}
+            />
           </div>
         </div>
         <div className="webwinkel-line"></div>
@@ -90,9 +172,18 @@ class Webwinkel extends React.Component {
         </p>
         <div className="landing-page-collection-container webwinkel">
           <div className="landing-page-collection-edition webwinkel">
-            <Edition title="Black Edition" />
-            <Edition title="Dutch Edition" />
-            <Edition title="Classic Edition" />
+            {this.state.collection[0] ? (
+              this.state.collection.map((collection) => (
+                <EditionList key={collection.id} name={collection.name} />
+              ))
+            ) : (
+              <div
+                className="edition-list-loading-spinner"
+                style={{ width: '360px' }}
+              >
+                <LoadingSpinner container />
+              </div>
+            )}
           </div>
         </div>
         <Footer />

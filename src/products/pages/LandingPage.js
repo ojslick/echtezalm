@@ -198,7 +198,10 @@ class LandingPage extends React.Component {
                 <>
                   {this.state.products[0] ? (
                     this.state.products.map((product) => (
-                      <div className="animate__animated animate__pulse">
+                      <div
+                        className="animate__animated animate__pulse"
+                        key={product.id}
+                      >
                         <ProductList
                           key={product.id}
                           price={product.price}

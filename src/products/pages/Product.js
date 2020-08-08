@@ -234,6 +234,7 @@ class Product extends React.Component {
                 <div
                   className="animate__animated animate__pulse product-page-products-list"
                   onClick={() => window.scrollTo(0, 0)}
+                  key={product.id}
                 >
                   <ProductList
                     className="animate__animated animate__pulse"

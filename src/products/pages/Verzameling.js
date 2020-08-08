@@ -1,5 +1,8 @@
 import React from 'react';
 
+import history from '../../history';
+
+import Footer from '../../shared/components/Footer/Footer';
 import Button from '../../shared/components/UIElements/Button';
 
 import Box from './images/box.svg';
@@ -7,7 +10,6 @@ import Delivery from './images/delivery.svg';
 import Titus from './images/titus.svg';
 
 import './Verzameling.css';
-import Footer from '../../shared/components/Footer/Footer';
 
 const Verzameling = () => {
   return (
@@ -32,6 +34,7 @@ const Verzameling = () => {
             color="black"
             text="Selecteer uw plan"
             border="none"
+            onClick={() => history.push('/verzameling/plan')}
           />
         </div>
       </div>

@@ -127,10 +127,11 @@
 }
 
 .landing-page-collection-edition {
-  margin-top: 72px;
+  margin-top: 57px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .landing-page-collection-black-edition {
@@ -462,8 +463,6 @@
 
   .landing-page-collection-edition {
     display: flex;
-    flex-direction: column;
-    height: 950px;
     width: 100%;
   }
 
@@ -480,7 +479,7 @@
   }
 
   .landing-page-collection-onze-collectie.margintop {
-    margin-top: 37px;
+    margin-top: 70px;
   }
 
   .landing-page-collection-Eenvoudige {

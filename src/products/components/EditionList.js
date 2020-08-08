@@ -8,9 +8,7 @@ class EditionList extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="edition-list">
-          <Edition title={this.props.name} key={this.props.id} />
-        </div>
+        <Edition title={this.props.name} key={this.props.id} />
       </React.Fragment>
     );
   }

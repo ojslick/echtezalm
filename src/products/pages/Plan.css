@@ -1,0 +1,90 @@
+.plan-collection-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.plan-collection-list-box-1 {
+  width: 360px;
+  height: 593px;
+  overflow: hidden;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.plan-collection-list-box-1-image {
+  max-width: 100%;
+  max-height: 301px;
+}
+
+.plan-collection-list-box-1-details {
+  padding: 18px;
+}
+
+.plan-collection-list-box-1-details-black {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 37px;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}
+
+.plan-collection-list-box-1-details-price {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 37px;
+  letter-spacing: 0.05em;
+  margin-top: 11px !important;
+  color: #dac08e;
+}
+
+.plan-collection-list-box-1-details-pieces {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.plan-collection-list-box-1-details-see-features {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 22px;
+  margin-top: 11px !important;
+  letter-spacing: 0.05em;
+  text-decoration-line: underline;
+  cursor: pointer;
+  color: #dac08e;
+}
+
+.plan-collection-customize-box {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.plan-collection-list-box-1-details-price-span {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.05em;
+
+  color: #dac08e;
+}

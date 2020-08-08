@@ -11,6 +11,7 @@ import LoadingSpinner from './shared/components/UIElements/LoadingSpinner';
 const Webwinkel = React.lazy(() => import('./products/pages/Webwinkel'));
 const Product = React.lazy(() => import('./products/pages/Product'));
 const Verzameling = React.lazy(() => import('.//products/pages/Verzameling'));
+const Plan = React.lazy(() => import('./products/pages/Plan'));
 const Login = React.lazy(() => import('./user/pages/Auth/Login'));
 const Register = React.lazy(() => import('./user/pages/Auth/Register'));
 
@@ -29,6 +30,7 @@ class App extends React.Component {
             <Route path="/webwinkel" exact component={Webwinkel} />
             <Route path="/webwinkel/product" exact component={Product} />
             <Route path="/verzameling" exact component={Verzameling} />
+            <Route path="/verzameling/plan" exact component={Plan} />
           </Switch>
         </Suspense>
       </Router>
