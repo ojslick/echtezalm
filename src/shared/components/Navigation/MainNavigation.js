@@ -288,6 +288,7 @@ class MainNavigation extends React.Component {
                         }`}
                         onClick={() => {
                           this.handleClick('mijnRekening');
+                          this.logout();
                         }}
                       >
                         Log out
