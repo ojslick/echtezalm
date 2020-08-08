@@ -134,6 +134,7 @@ const Verzameling = () => {
             color="black"
             text="Selecteer uw plan"
             border="none"
+            onClick={() => history.push('/verzameling/plan')}
           />
         </div>
       </div>

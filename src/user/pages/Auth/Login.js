@@ -67,6 +67,7 @@ class Login extends React.Component {
     }
 
     try {
+      this.setState({ isLoading: true });
       const response = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/users/login`,
         {
