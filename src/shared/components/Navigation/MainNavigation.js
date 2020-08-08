@@ -36,7 +36,6 @@ class MainNavigation extends React.Component {
   };
 
   componentDidMount() {
-    console.log('tcomp', this.props.loggedIn);
     const storeData = JSON.parse(localStorage.getItem('userData'));
     if (storeData && storeData.token && storeData.expiration) {
       this.props.isLoggedIn({
@@ -212,7 +211,6 @@ class MainNavigation extends React.Component {
   };
 
   render() {
-    console.log('time', this.state);
     return (
       <div className="main-nav-container">
         <div className="logo-container">
@@ -544,7 +542,6 @@ class MainNavigation extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('mapeee', state.isLoggedIn);
   return { loggedIn: state.isLoggedIn };
 };
 

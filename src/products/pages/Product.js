@@ -1,21 +1,59 @@
 import React from 'react';
 import ReactStarRating from 'react-star-ratings-component';
+import { connect } from 'react-redux';
 
 import history from '../../history';
+
+import ProductList from '../components/ProductList';
+import Footer from '../../shared/components/Footer/Footer';
+import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 
 import Button from '../../shared/components/UIElements/Button';
 import backArrow from './images/backArrow.svg';
 import salmon from './images/salmon.svg';
 
 import './Product.css';
-import ProductList from '../components/ProductList';
-import Footer from '../../shared/components/Footer/Footer';
 
 class Product extends React.Component {
-  state = { description: true, review: false, count: 0, starCount: 3.5 };
+  state = {
+    description: true,
+    review: false,
+    count: 0,
+    starCount: 3.5,
+    products: [],
+  };
+
+  UNSAFE_componentWillMount() {
+    if (Object.entries(this.props.product).length === 0) {
+      history.goBack();
+    }
+  }
 
   componentDidMount() {
     window.scrollTo(0, 0);
+    if (Object.entries(this.props.product).length === 0) {
+      history.goBack();
+    }
+    const fetchProducts = async () => {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/products/`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        throw new Error(responseData.message);
+      }
+
+      this.setState({ products: responseData.products });
+    };
+    fetchProducts();
   }
 
   handleColorChange = (name) => {
@@ -63,29 +101,31 @@ class Product extends React.Component {
                 <img
                   src={salmon}
                   className="product-page-pictures-left-small-pics"
+                  alt="salmon"
                 />
                 <img
                   src={salmon}
                   className="product-page-pictures-left-small-pics"
+                  alt="salmon"
                 />
                 <img
                   src={salmon}
                   className="product-page-pictures-left-small-pics"
+                  alt="salmon"
                 />
               </div>
             </div>
             <div className="product-page-pictures-right">
               <h1 className="product-page-pictures-right-product-title">
-                Wild Caught Colossal Salmon
+                {this.props.product.name}
               </h1>
               <ul className="product-page-pictures-right-product-description-container">
                 <li className="product-page-pictures-right-product-description">
-                  amet commodo rutrum. Id justo eget massa ma amet commodo
-                  rutrum. Id justo eget massa ma amet commodo rutrum.
+                  {this.props.product.highlight}
                 </li>
               </ul>
               <p className="product-page-pictures-right-product-price">
-                €39.95
+                {`€${this.props.product.price}`}
               </p>
               <div className="product-page-pictures-right-product-add-to-cart">
                 <div className="product-page-pictures-right-product-add-to-cart-left">
@@ -138,21 +178,7 @@ class Product extends React.Component {
           <div className="product-page-pictures-right-product-toggle-review-or-description">
             {this.state.description ? (
               <p className="product-page-pictures-right-product-toggle-review-or-description-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Consectetur amet faucibus amet commodo rutrum. Id justo eget
-                massa massa lorem aliquam magna sem. Facilisi consectetur sit
-                viverra elit sit purus faucibus. Turpis vitae tempus ac sagittis
-                tellus pulvinar enim. Etiam in mattis at rhoncus risus. Lorem
-                ipsum dolor sit amet, consectetur adipiscing elit. Consectetur
-                amet faucibus amet commodo rutrum. Id justo eget massa massa
-                lorem aliquam magna sem. Facilisi consectetur sit viverra elit
-                sit purus faucibus. Turpis vitae tempus ac sagittis tellus
-                pulvinar enim. Etiam in mattis at rhoncus risus. Lorem ipsum
-                dolor sit amet, consectetur adipiscing elit. Consectetur amet
-                faucibus amet commodo rutrum. Id justo eget massa massa lorem
-                aliquam magna sem. Facilisi consectetur sit viverra elit sit
-                purus faucibus. Turpis vitae tempus ac sagittis tellus pulvinar
-                enim. Etiam in mattis at rhoncus risus
+                {this.props.product.description}
               </p>
             ) : (
               <div className="product-page-pictures-right-product-toggle-review-or-description-reviews">
@@ -187,6 +213,15 @@ class Product extends React.Component {
                   </span>
                 </p>
                 <div className="product-page-pictures-right-product-toggle-review-line"></div>
+                <div style={{ marginTop: '39px' }}>
+                  <Button
+                    width="171px"
+                    background="#0f0f0f"
+                    color="#C1C1C1"
+                    border="1px solid #FFFFFF"
+                    text="Meer laden"
+                  />
+                </div>
               </div>
             )}
           </div>
@@ -194,7 +229,28 @@ class Product extends React.Component {
             Klanten kochten ook
           </h1>
           <div className="product-page-product-list">
-            <ProductList />
+            {this.state.products[0] ? (
+              this.state.products.map((product) => (
+                <div
+                  className="animate__animated animate__pulse"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
+                  <ProductList
+                    className="animate__animated animate__pulse"
+                    key={product.id}
+                    price={product.price}
+                    name={product.name}
+                    prod={product}
+                  />
+                </div>
+              ))
+            ) : (
+              <div
+                style={{ marginTop: '72px', height: '424px', width: '100%' }}
+              >
+                <LoadingSpinner container />
+              </div>
+            )}
           </div>
         </div>
         <Footer />
@@ -203,4 +259,8 @@ class Product extends React.Component {
   }
 }
 
-export default Product;
+const mapStateToProps = (state) => {
+  return { product: state.product };
+};
+
+export default connect(mapStateToProps)(Product);

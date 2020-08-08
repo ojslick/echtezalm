@@ -183,6 +183,9 @@
 
 .landing-page-products {
   width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .landing-page-line {
@@ -480,14 +483,6 @@
     margin-top: 37px;
   }
 
-  .landing-page-products {
-    display: inline-block;
-  }
-
-  .product-card-container {
-    width: 100%;
-  }
-
   .landing-page-collection-Eenvoudige {
     display: inline-block;
     width: 100%;
@@ -522,5 +517,15 @@
 @media only screen and (max-width: 768px) {
   .landing-page-button-container {
     width: 80%;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .product-card-container {
+    width: 100%;
+  }
+
+  .landing-page-products {
+    display: inline-block;
   }
 }

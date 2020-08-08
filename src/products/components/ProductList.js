@@ -15,22 +15,21 @@ class ProductList extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className={`product-list ${this.props.className}`}>
-          <ProductItem
-            src={productImg}
-            productName={this.props.name}
-            price={`€${this.props.price}`}
-            background={this.state.addToCart ? 'black' : '#DAC08E'}
-            color={this.state.addToCart ? '#DAC08E' : 'white'}
-            border={this.state.addToCart ? '1px solid #DAC08E' : 'none'}
-            text={
-              this.state.addToCart
-                ? 'Toegevoegd aan winkelwagen'
-                : 'Voeg toe aan winkelkar'
-            }
-            onClick={this.handleAddToCart}
-          />
-        </div>
+        <ProductItem
+          src={productImg}
+          productName={this.props.name}
+          price={`€${this.props.price}`}
+          background={this.state.addToCart ? 'black' : '#DAC08E'}
+          color={this.state.addToCart ? '#DAC08E' : 'white'}
+          border={this.state.addToCart ? '1px solid #DAC08E' : 'none'}
+          text={
+            this.state.addToCart
+              ? 'Toegevoegd aan winkelwagen'
+              : 'Voeg toe aan winkelkar'
+          }
+          onClick={this.handleAddToCart}
+          prod={this.props.prod}
+        />
       </React.Fragment>
     );
   }

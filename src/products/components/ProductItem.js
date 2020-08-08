@@ -1,5 +1,9 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
+
+import { product } from '../../actions';
+
 import history from '../../history';
 import Button from '../../shared/components/UIElements/Button';
 
@@ -10,7 +14,10 @@ class ProductItem extends React.Component {
     return (
       <div
         className="product-card-container"
-        onClick={() => history.push('/webwinkel/product')}
+        onClick={() => {
+          history.push('/webwinkel/product');
+          this.props.product(this.props.prod);
+        }}
         style={{ cursor: 'pointer' }}
       >
         <img src={this.props.src} alt="product" className="product-card" />
@@ -40,4 +47,4 @@ class ProductItem extends React.Component {
   }
 }
 
-export default ProductItem;
+export default connect(null, { product })(ProductItem);

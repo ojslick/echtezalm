@@ -195,15 +195,23 @@ class LandingPage extends React.Component {
                 <>
                   {this.state.products[0] ? (
                     this.state.products.map((product) => (
-                      <ProductList
-                        className="animate__animated animate__pulse"
-                        key={product.id}
-                        price={product.price}
-                        name={product.name}
-                      />
+                      <div className="animate__animated animate__pulse">
+                        <ProductList
+                          key={product.id}
+                          price={product.price}
+                          name={product.name}
+                          prod={product}
+                        />
+                      </div>
                     ))
                   ) : (
-                    <div style={{ marginTop: '72px', height: '424px' }}>
+                    <div
+                      style={{
+                        marginTop: '72px',
+                        height: '424px',
+                        width: '265px',
+                      }}
+                    >
                       <LoadingSpinner container />
                     </div>
                   )}
