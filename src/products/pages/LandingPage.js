@@ -176,7 +176,10 @@ class LandingPage extends React.Component {
                   <EditionList key={collection.id} name={collection.name} />
                 ))
               ) : (
-                <div className="edition-list-loading-spinner">
+                <div
+                  className="edition-list-loading-spinner"
+                  style={{ width: '360px' }}
+                >
                   <LoadingSpinner container />
                 </div>
               )}

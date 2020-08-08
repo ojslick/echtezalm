@@ -281,3 +281,9 @@
     margin-top: 60px;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .product-page-products-list {
+    width: 100%;
+  }
+}

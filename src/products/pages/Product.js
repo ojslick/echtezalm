@@ -232,7 +232,7 @@ class Product extends React.Component {
             {this.state.products[0] ? (
               this.state.products.map((product) => (
                 <div
-                  className="animate__animated animate__pulse"
+                  className="animate__animated animate__pulse product-page-products-list"
                   onClick={() => window.scrollTo(0, 0)}
                 >
                   <ProductList
