@@ -1,0 +1,63 @@
+.collection-use-echtezalm {
+  min-height: 300px;
+  padding: 50px 5%;
+  background: #3a3a3a;
+}
+
+.collection-use-echtezalm-text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  margin-top: 62px;
+  color: #ffffff;
+}
+
+.collection-use-echtezalm-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 24px;
+}
+
+.collection-use-echtezalm-box-1 {
+  margin-top: 15px;
+  width: 325px;
+  height: 143px;
+  padding: 10px 17px;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.collection-use-echtezalm-box-1-vitamins {
+  margin-top: 15px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.collection-use-echtezalm-box-1-salmon {
+  margin-top: 15px;
+  margin-top: 10px !important;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}

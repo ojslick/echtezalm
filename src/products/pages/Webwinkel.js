@@ -16,14 +16,14 @@ class Webwinkel extends React.Component {
     return (
       <div className="landing-page-container webwinkel">
         <div
-          className="landing-page-background-pic webwinkel"
+          className="landing-page-background-pic webwinkel animate__animated animate__backInDown"
           style={{ paddingLeft: '10%', paddingRight: '10%' }}
         >
           <h1 className="landing-page-background-pic-text">
             Een bijzondere ervaring van smaak en traditie
           </h1>
           <div
-            className="landing-page-button-container"
+            className="landing-page-button-container animate__animated animate__backInUp"
             style={{ justifyContent: 'center' }}
           >
             <Button
@@ -36,14 +36,18 @@ class Webwinkel extends React.Component {
             />
           </div>
         </div>
-        <h1 className="landing-page-collection-onze-collectie webwinkel">
-          Online winkel
-        </h1>
-        <p className="landing-page-collection-onze-exclusieve">
-          Alleen de beste, speciaal voor jou geselecteerd
-        </p>
+
         <div className="landing-page-collection-container webwinkel">
-          <div className="webwinkel-products-remaning">
+          <h1 className="landing-page-collection-onze-collectie webwinkel">
+            Online winkel
+          </h1>
+          <p className="landing-page-collection-onze-exclusieve">
+            Alleen de beste, speciaal voor jou geselecteerd
+          </p>
+          <div
+            className="webwinkel-products-remaning"
+            style={{ marginTop: '30px' }}
+          >
             <p className="webwinkel-products-remaning-left">
               12 resultaten beschikbaar
             </p>
