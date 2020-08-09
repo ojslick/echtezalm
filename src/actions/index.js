@@ -14,6 +14,9 @@ export const product = (data) => async (dispatch) => {
   dispatch({ type: 'PRODUCT', payload: data });
 };
 
+export const collection = (data) => async (dispatch) => {
+  dispatch({ type: 'COLLECTION', payload: data });
+};
 // export const voornaam = (data) => async (dispatch) => {
 //   dispatch({ type: 'VOORNAAM', payload: data });
 // };

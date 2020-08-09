@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import inputReducer from './inputReducer';
 import updateLoginReducer from './updateLoginReducer';
 import productReducer from './productReducer';
+import collectionReducer from './collectionReducer';
 
 import isLoggedInReducer from './isLoggedInReducer';
 
@@ -10,4 +11,5 @@ export default combineReducers({
   isLoggedIn: isLoggedInReducer,
   updateLogin: updateLoginReducer,
   product: productReducer,
+  collection: collectionReducer,
 });

@@ -12,6 +12,9 @@ const Webwinkel = React.lazy(() => import('./products/pages/Webwinkel'));
 const Product = React.lazy(() => import('./products/pages/Product'));
 const Verzameling = React.lazy(() => import('.//products/pages/Verzameling'));
 const Plan = React.lazy(() => import('./products/pages/Plan'));
+const PlanDescription = React.lazy(() =>
+  import('./products/pages/PlanDescription')
+);
 const Login = React.lazy(() => import('./user/pages/Auth/Login'));
 const Register = React.lazy(() => import('./user/pages/Auth/Register'));
 
@@ -31,6 +34,11 @@ class App extends React.Component {
             <Route path="/webwinkel/product" exact component={Product} />
             <Route path="/verzameling" exact component={Verzameling} />
             <Route path="/verzameling/plan" exact component={Plan} />
+            <Route
+              path="/verzameling/plan/description"
+              exact
+              component={PlanDescription}
+            />
           </Switch>
         </Suspense>
       </Router>

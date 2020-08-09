@@ -1,4 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { collection } from '../../actions';
+
+import history from '../../history';
 
 import BlackEdition from './images/collection.jpg';
 
@@ -51,7 +56,7 @@ class Plan extends React.Component {
           <div className="plan-collection-list">
             {this.state.collection[0] ? (
               this.state.collection.map((collection) => (
-                <div className="plan-collection-list-box-1">
+                <div className="plan-collection-list-box-1" key={collection.id}>
                   <img
                     src={BlackEdition}
                     alt="black-edition"
@@ -78,6 +83,10 @@ class Plan extends React.Component {
                         color="white"
                         text="Select Plan"
                         border="none"
+                        onClick={() => {
+                          this.props.collection(collection);
+                          history.push('/verzameling/plan/description');
+                        }}
                       />
                     </div>
                   </div>
@@ -141,4 +150,4 @@ class Plan extends React.Component {
   }
 }
 
-export default Plan;
+export default connect(null, { collection })(Plan);
