@@ -1,0 +1,111 @@
+.custombox-price-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.custombox-price {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 28px;
+  letter-spacing: 0.05em;
+
+  color: #dac08e;
+}
+
+.custombox-price-proceed {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.custombox-price-proceed-remaining {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 19px;
+  line-height: 28px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.custombox-products-container {
+  margin-top: 30px;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.custombox-product {
+  width: 261px;
+  min-height: 150px;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.custombox-product-image {
+  max-width: 100%;
+  max-height: 180px;
+  cursor: pointer;
+}
+
+.custombox-product-details {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  height: 150px;
+}
+
+.custombox-product-details-product-name {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.custombox-product-details-counter {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.custombox-product-details-counter-number {
+  width: 40px;
+  height: 40px;
+
+  color: #ffffff;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
+  border-radius: 3px;
+}
+
+.custombox-product-details-counter-text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+  text-decoration-line: underline;
+  cursor: pointer;
+  color: #dac08e;
+}

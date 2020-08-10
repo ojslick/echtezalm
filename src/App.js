@@ -15,6 +15,7 @@ const Plan = React.lazy(() => import('./products/pages/Plan'));
 const PlanDescription = React.lazy(() =>
   import('./products/pages/PlanDescription')
 );
+const CustomBox = React.lazy(() => import('./products/pages/CustomBox'));
 const Login = React.lazy(() => import('./user/pages/Auth/Login'));
 const Register = React.lazy(() => import('./user/pages/Auth/Register'));
 
@@ -38,6 +39,11 @@ class App extends React.Component {
               path="/verzameling/plan/description"
               exact
               component={PlanDescription}
+            />
+            <Route
+              path="/verzameling/plan/custombox"
+              exact
+              component={CustomBox}
             />
           </Switch>
         </Suspense>

@@ -105,31 +105,13 @@ class PlanDescription extends React.Component {
                 {`€${this.props.collection.price}`}
               </p>
               <div className="product-page-pictures-right-product-add-to-cart">
-                <div className="product-page-pictures-right-product-add-to-cart-left">
-                  <div className="product-page-pictures-right-product-add-to-cart-left-counter">
-                    <p
-                      style={{ color: 'white', cursor: 'pointer' }}
-                      onClick={() => this.handleCounter('minus')}
-                    >
-                      -
-                    </p>
-                    <div className="product-page-pictures-right-product-add-to-cart-left-counter-number">
-                      {this.state.count}
-                    </div>
-                    <p
-                      style={{ color: 'white', cursor: 'pointer' }}
-                      onClick={() => this.handleCounter('add')}
-                    >
-                      +
-                    </p>
-                  </div>
-                </div>
                 <Button
                   width="65%"
                   background="#AD976E"
                   color="#FFFFFF"
                   border="none"
-                  text="Voeg toe aan winkelkar"
+                  text="Select Plan"
+                  onClick={() => history.push('/verzameling/plan/custombox')}
                 />
               </div>
             </div>
