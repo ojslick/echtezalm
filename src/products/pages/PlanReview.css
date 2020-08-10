@@ -1,0 +1,192 @@
+.product-page-back {
+  display: flex;
+  justify-content: space-between;
+  width: 60px;
+  cursor: pointer;
+}
+
+.product-page-back-text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+
+  color: #dac08e;
+}
+
+.plan-review-flex {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 29px;
+}
+
+.plan-review-image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.plan-review-flex-left {
+  width: 45%;
+  max-height: 442px;
+}
+
+.plan-review-flex-right {
+  width: 45%;
+}
+
+.plan-review-flex-right-plan {
+  width: 100%;
+  min-height: 196px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  background: #3a3a3a;
+  padding: 15px;
+}
+
+.plan-review-flex-right-plan-plan {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 37px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.plan-review-flex-right-plan-text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.plan-review-flex-right-plan-text-change {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.05em;
+
+  color: #dac08e;
+}
+
+.plan-review-flex-right-subscription-details {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.plan-review-flex-right-subscription-details-months {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100px;
+  width: 40%;
+  align-items: center;
+}
+
+.plan-review-flex-right-subscription-details-months-header {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.plan-review-flex-right-subscription-details-price {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100px;
+  width: 28%;
+  align-items: center;
+}
+
+.plan-review-flex-right-subscription-details-months-text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.custombox-product-details-counter {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.custombox-product-details-counter-number {
+  width: 40px;
+  height: 40px;
+
+  color: #ffffff;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
+  border-radius: 3px;
+}
+
+@media only screen and (max-width: 1100px) {
+  .plan-review-flex-right-subscription-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .plan-review-flex-right-subscription-details-months {
+    width: 100%;
+  }
+
+  .plan-review-flex-right-subscription-details-price {
+    width: 100%;
+  }
+
+  .plan-review-flex-right-subscription-details-months {
+    flex-direction: row;
+  }
+
+  .custombox-product-details-counter {
+    width: 100px;
+  }
+
+  .plan-review-flex-right-subscription-details-price {
+    flex-direction: row;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .plan-review-flex {
+    display: inline-block;
+  }
+
+  .plan-review-flex-left {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .plan-review-flex-right {
+    width: 100%;
+    margin-top: 30px;
+  }
+}

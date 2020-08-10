@@ -1,5 +1,7 @@
 import React from 'react';
 
+import history from '../../history';
+
 import Counter from '../components/Counter';
 import Button from '../../shared/components/UIElements/Button';
 
@@ -17,6 +19,7 @@ class CustomBox extends React.Component {
   };
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     const fetchProducts = async () => {
       const response = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/products/`,
@@ -96,6 +99,7 @@ class CustomBox extends React.Component {
                 color="#FFFFFF"
                 border="none"
                 text="Proceed to Plan"
+                onClick={() => history.push('/verzameling/plan/plan-review')}
               />
             </div>
           </div>

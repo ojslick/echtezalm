@@ -57,7 +57,7 @@
 
 .custombox-product-image {
   max-width: 100%;
-  max-height: 180px;
+  max-height: 100%;
   cursor: pointer;
 }
 
@@ -123,5 +123,6 @@
   .custombox-price-proceed {
     margin-top: 20px;
     width: 100%;
+    text-align: start;
   }
 }

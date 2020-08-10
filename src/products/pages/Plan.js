@@ -85,7 +85,7 @@ class Plan extends React.Component {
                         border="none"
                         onClick={() => {
                           this.props.collection(collection);
-                          history.push('/verzameling/plan/description');
+                          history.push('/verzameling/plan/plan-review');
                         }}
                       />
                     </div>
@@ -138,6 +138,7 @@ class Plan extends React.Component {
                     color="white"
                     text="Select Plan"
                     border="none"
+                    onClick={() => history.push('/verzameling/plan/custombox')}
                   />
                 </div>
               </div>
