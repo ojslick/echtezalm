@@ -13,6 +13,12 @@ import Button from '../../shared/components/UIElements/Button';
 class PlanReview extends React.Component {
   state = { count: 1, subTotal: this.props.collection.price };
 
+  UNSAFE_componentWillMount() {
+    if (Object.entries(this.props.collection).length === 0) {
+      history.goBack();
+    }
+  }
+
   componentDidMount() {
     window.scrollTo(0, 0);
   }
