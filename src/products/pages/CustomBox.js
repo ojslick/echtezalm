@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
+import { collection } from '../../actions/';
 import history from '../../history';
 
 import Counter from '../components/Counter';
@@ -99,7 +101,13 @@ class CustomBox extends React.Component {
                 color="#FFFFFF"
                 border="none"
                 text="Proceed to Plan"
-                onClick={() => history.push('/verzameling/plan/plan-review')}
+                onClick={() => {
+                  history.push('/verzameling/plan/plan-review');
+                  this.props.collection({
+                    price: this.state.amount,
+                    products: this.state.selectedProducts,
+                  });
+                }}
               />
             </div>
           </div>
@@ -163,4 +171,4 @@ class CustomBox extends React.Component {
   }
 }
 
-export default CustomBox;
+export default connect(null, { collection })(CustomBox);

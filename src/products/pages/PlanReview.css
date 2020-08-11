@@ -76,7 +76,7 @@
   font-size: 20px;
   line-height: 30px;
   letter-spacing: 0.05em;
-
+  cursor: pointer;
   color: #dac08e;
 }
 
@@ -147,6 +147,13 @@
   border-radius: 3px;
 }
 
+.plan-review-checkout-button {
+  margin-top: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
 @media only screen and (max-width: 1100px) {
   .plan-review-flex-right-subscription-details {
     display: flex;
@@ -188,5 +195,9 @@
   .plan-review-flex-right {
     width: 100%;
     margin-top: 30px;
+  }
+
+  .plan-review-checkout-button {
+    justify-content: center;
   }
 }

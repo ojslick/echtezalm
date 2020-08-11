@@ -16,6 +16,7 @@ class Plan extends React.Component {
   state = { collection: [] };
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     const fetchCollection = async () => {
       const response = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/collection/`,

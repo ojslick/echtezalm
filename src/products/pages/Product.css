@@ -1,6 +1,6 @@
 .product-page-container {
   width: 100%;
-  padding: 50px 10% 50px 10%;
+  padding: 50px 9%;
   background: #0f0f0f;
   text-align: center;
   min-height: 100vh;
@@ -229,7 +229,7 @@
 .product-page-product-list {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 

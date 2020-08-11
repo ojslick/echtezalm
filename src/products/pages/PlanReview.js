@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import history from '../../history';
 
@@ -7,18 +8,29 @@ import backArrow from './images/backArrow.svg';
 
 import './PlanReview.css';
 import Footer from '../../shared/components/Footer/Footer';
+import Button from '../../shared/components/UIElements/Button';
 
 class PlanReview extends React.Component {
-  state = { count: 0 };
+  state = { count: 1, subTotal: this.props.collection.price };
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
 
   handleCounter = (operation) => {
     if (operation === 'add') {
       this.setState({ count: this.state.count + 1 });
+      this.setState({
+        subTotal: this.state.subTotal + this.props.collection.price,
+      });
     } else {
-      if (this.state.count === 0) {
+      if (this.state.count === 1) {
         return;
       } else {
         this.setState({ count: this.state.count - 1 });
+        this.setState({
+          subTotal: this.state.subTotal - this.props.collection.price,
+        });
       }
     }
   };
@@ -50,9 +62,14 @@ class PlanReview extends React.Component {
               <div className="plan-review-flex-right-plan">
                 <h1 className="plan-review-flex-right-plan-plan">Plan</h1>
                 <p className="plan-review-flex-right-plan-text">
-                  Black Edition wine - 5, 15 or 30 pieces
+                  {this.props.collection.products
+                    ? 'Premium Custom Box'
+                    : `${this.props.collection.name} wine - ${this.props.collection.pieces}`}
                 </p>
-                <p className="plan-review-flex-right-plan-text-change">
+                <p
+                  className="plan-review-flex-right-plan-text-change"
+                  onClick={() => history.goBack()}
+                >
                   Change
                 </p>
               </div>
@@ -95,7 +112,7 @@ class PlanReview extends React.Component {
                       Monthly Price
                     </p>
                     <p className="plan-review-flex-right-subscription-details-months-text">
-                      €98.00
+                      €{this.props.collection.price}
                     </p>
                   </div>
                   <div className="plan-review-flex-right-subscription-details-price">
@@ -103,12 +120,22 @@ class PlanReview extends React.Component {
                       Sub Total
                     </p>
                     <p className="plan-review-flex-right-subscription-details-months-text">
-                      €210.00
+                      €{this.state.subTotal}
                     </p>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+          <div className="plan-review-checkout-button">
+            <Button
+              width="198px"
+              background="#AD976E"
+              color="#FFFFFF"
+              border="none"
+              text="Proceed to checkout"
+              onClick={() => history.push('/checkout')}
+            />
           </div>
         </div>
         <Footer />
@@ -117,4 +144,8 @@ class PlanReview extends React.Component {
   }
 }
 
-export default PlanReview;
+const mapStateToProps = (state) => {
+  return { collection: state.collection };
+};
+
+export default connect(mapStateToProps)(PlanReview);
