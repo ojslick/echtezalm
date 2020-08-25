@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { addToCart } from '../../actions';
 
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import Button from '../../shared/components/UIElements/Button';
@@ -13,6 +16,9 @@ class Webwinkel extends React.Component {
   state = { products: [], collection: [] };
 
   componentDidMount() {
+    const localCartData = JSON.parse(localStorage.getItem('cart'));
+    this.props.addToCart(localCartData);
+
     window.scrollTo(0, 0);
 
     const fetchProducts = async () => {
@@ -192,4 +198,4 @@ class Webwinkel extends React.Component {
   }
 }
 
-export default Webwinkel;
+export default connect(null, { addToCart })(Webwinkel);

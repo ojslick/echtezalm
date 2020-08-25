@@ -2,6 +2,8 @@ import React from 'react';
 import ReactStarRating from 'react-star-ratings-component';
 import { connect } from 'react-redux';
 
+import { addToCart } from '../../actions';
+
 import history from '../../history';
 
 import Footer from '../../shared/components/Footer/Footer';
@@ -27,6 +29,9 @@ class PlanDescription extends React.Component {
   }
 
   componentDidMount() {
+    const localCartData = JSON.parse(localStorage.getItem('cart'));
+    this.props.addToCart(localCartData);
+
     window.scrollTo(0, 0);
     if (Object.entries(this.props.collection).length === 0) {
       history.goBack();
@@ -195,4 +200,4 @@ const mapStateToProps = (state) => {
   return { collection: state.collection };
 };
 
-export default connect(mapStateToProps)(PlanDescription);
+export default connect(mapStateToProps, { addToCart })(PlanDescription);

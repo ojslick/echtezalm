@@ -1,0 +1,54 @@
+.cart-page-container {
+  text-align: center;
+  padding: 79px 10%;
+  background: #0f0f0f;
+  min-height: 700px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.cart-container-header {
+  font-family: Playfair Display;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 37px;
+  letter-spacing: 0.05em;
+  color: #dac08e;
+}
+
+.cart-empty-cart-pic-container {
+  width: 250px;
+  height: 250px;
+  background: #3a3a3a;
+  border-radius: 125px;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cart-empty-cart-text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.05em;
+  margin-top: 20px;
+  color: #ffffff;
+}
+
+.cart-empty-cart-webshop {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}

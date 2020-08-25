@@ -2,6 +2,8 @@ import React from 'react';
 import ReactStarRating from 'react-star-ratings-component';
 import { connect } from 'react-redux';
 
+import { addToCart } from '../../actions/';
+
 import history from '../../history';
 
 import ProductList from '../components/ProductList';
@@ -21,15 +23,12 @@ class Product extends React.Component {
     count: 0,
     starCount: 3.5,
     products: [],
+    copyCartItems: [],
   };
 
-  UNSAFE_componentWillMount() {
-    if (Object.entries(this.props.product).length === 0) {
-      history.goBack();
-    }
-  }
-
   componentDidMount() {
+    const localCartData = JSON.parse(localStorage.getItem('cart'));
+    this.props.addToCart(localCartData);
     window.scrollTo(0, 0);
     if (Object.entries(this.props.product).length === 0) {
       history.goBack();
@@ -76,6 +75,12 @@ class Product extends React.Component {
         this.setState({ count: this.state.count - 1 });
       }
     }
+  };
+
+  saveCartToLocal = (id, name, price, count) => {
+    let copyCartItems = JSON.parse(localStorage.getItem('cart'));
+    copyCartItems.push({ id, name, price, count });
+    localStorage.setItem('cart', JSON.stringify(copyCartItems));
   };
 
   render() {
@@ -153,6 +158,21 @@ class Product extends React.Component {
                   color="#FFFFFF"
                   border="none"
                   text="Voeg toe aan winkelkar"
+                  onClick={() => {
+                    this.props.addToCart({
+                      name: this.props.product.name,
+                      price: this.props.product.price,
+                      count: this.state.count,
+                    });
+                    history.push('/cart');
+
+                    this.saveCartToLocal(
+                      this.props.product.id,
+                      this.props.product.name,
+                      this.props.product.price,
+                      this.state.count
+                    );
+                  }}
                 />
               </div>
             </div>
@@ -264,4 +284,4 @@ const mapStateToProps = (state) => {
   return { product: state.product };
 };
 
-export default connect(mapStateToProps)(Product);
+export default connect(mapStateToProps, { addToCart })(Product);

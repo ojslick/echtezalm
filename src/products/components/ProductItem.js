@@ -12,15 +12,16 @@ import './ProductItem.css';
 class ProductItem extends React.Component {
   render() {
     return (
-      <div
-        className="product-card-container"
-        onClick={() => {
-          history.push('/webwinkel/product');
-          this.props.product(this.props.prod);
-        }}
-        style={{ cursor: 'pointer' }}
-      >
-        <img src={this.props.src} alt="product" className="product-card" />
+      <div className="product-card-container" style={{ cursor: 'pointer' }}>
+        <img
+          src={this.props.src}
+          alt="product"
+          className="product-card"
+          onClick={() => {
+            history.push('/webwinkel/product');
+            this.props.product(this.props.prod);
+          }}
+        />
         <div className="product-card-body">
           <>
             <h1 className="product-card-body-product-name">

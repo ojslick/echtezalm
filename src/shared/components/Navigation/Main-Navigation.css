@@ -31,6 +31,37 @@ p {
   height: 30px;
   width: 30px;
   cursor: pointer;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.cart-container {
+  width: 40px;
+  position: relative;
+  height: 50px;
+  cursor: pointer;
+}
+
+.cart-items-count {
+  background-image: url(./images/ItemCount.svg);
+  position: absolute;
+  left: 20px;
+  top: 0;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 19px;
+  /* identical to box height */
+
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
 }
 
 .nav-container {

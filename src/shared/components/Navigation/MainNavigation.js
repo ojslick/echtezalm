@@ -33,9 +33,16 @@ class MainNavigation extends React.Component {
     visible: false,
     token: null,
     tokenExpirationDate: null,
+    cartItems: [],
   };
 
   componentDidMount() {
+    !JSON.parse(localStorage.getItem('cart'))
+      ? localStorage.setItem('cart', JSON.stringify([]))
+      : this.setState({
+          cartItems: JSON.parse(localStorage.getItem('cart')),
+        });
+
     const storeData = JSON.parse(localStorage.getItem('userData'));
     if (storeData && storeData.token && storeData.expiration) {
       this.props.isLoggedIn({
@@ -76,13 +83,19 @@ class MainNavigation extends React.Component {
     this.setState({ tokenExpirationDate: null });
   };
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     if (this.props.loggedIn.token && this.props.loggedIn.expirationDate) {
       const remainingTime =
         this.props.loggedIn.expirationDate.getTime() - new Date().getTime();
       logoutTimer = setTimeout(this.logout, remainingTime);
     } else {
       clearTimeout(logoutTimer);
+    }
+
+    if (this.state.cartItems.length !== this.props.cartItems.length) {
+      this.setState({
+        cartItems: this.props.cartItems,
+      });
     }
   }
 
@@ -329,8 +342,23 @@ class MainNavigation extends React.Component {
                     </ul>
                   )}
                 </div>
-
-                <img src={cart} alt="cart-icon" className="cart-icon" />
+                <div
+                  style={{
+                    width: '40px',
+                    position: 'relative',
+                    height: '50px',
+                  }}
+                  onClick={() => history.push('/cart')}
+                >
+                  <div className="cart-container">
+                    <img src={cart} alt="cart-icon" className="cart-icon" />
+                    {this.state.cartItems.length > 0 && (
+                      <div className="cart-items-count">
+                        <p>{this.state.cartItems.length}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
             </React.Fragment>
           ) : (
@@ -341,7 +369,23 @@ class MainNavigation extends React.Component {
                 className="logo-box"
                 onClick={() => history.push('/')}
               />
-              <img src={cart} alt="cart-icon" className="cart-icon" />
+              <div
+                style={{
+                  width: '40px',
+                  position: 'relative',
+                  height: '50px',
+                }}
+                onClick={() => history.push('/cart')}
+              >
+                <div className="cart-container">
+                  <img src={cart} alt="cart-icon" className="cart-icon" />
+                  {this.state.cartItems.length > 0 && (
+                    <div className="cart-items-count">
+                      <p>{this.state.cartItems.length}</p>
+                    </div>
+                  )}
+                </div>
+              </div>
             </React.Fragment>
           )}
         </div>
@@ -543,7 +587,7 @@ class MainNavigation extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { loggedIn: state.isLoggedIn };
+  return { loggedIn: state.isLoggedIn, cartItems: state.cart };
 };
 
 export default connect(mapStateToProps, { isLoggedIn })(MainNavigation);

@@ -21,6 +21,10 @@ export const collection = (data) => async (dispatch) => {
 export const customBox = (data) => async (dispatch) => {
   dispatch({ type: 'CUSTOM_BOX', payload: data });
 };
+
+export const addToCart = (data) => async (dispatch) => {
+  dispatch({ type: 'ADD_TO_CART', payload: data });
+};
 // export const voornaam = (data) => async (dispatch) => {
 //   dispatch({ type: 'VOORNAAM', payload: data });
 // };

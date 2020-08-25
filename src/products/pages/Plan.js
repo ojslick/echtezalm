@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { collection } from '../../actions';
+import { collection, addToCart } from '../../actions';
 
 import history from '../../history';
 
@@ -16,6 +16,9 @@ class Plan extends React.Component {
   state = { collection: [] };
 
   componentDidMount() {
+    const localCartData = JSON.parse(localStorage.getItem('cart'));
+    this.props.addToCart(localCartData);
+
     window.scrollTo(0, 0);
     const fetchCollection = async () => {
       const response = await fetch(
@@ -73,7 +76,13 @@ class Plan extends React.Component {
                     <h1 className="plan-collection-list-box-1-details-price">
                       {`€${collection.price}`}
                     </h1>
-                    <p className="plan-collection-list-box-1-details-see-features">
+                    <p
+                      className="plan-collection-list-box-1-details-see-features"
+                      onClick={() => {
+                        this.props.collection(collection);
+                        history.push('/verzameling/plan/description');
+                      }}
+                    >
                       See features
                     </p>
 
@@ -152,4 +161,4 @@ class Plan extends React.Component {
   }
 }
 
-export default connect(null, { collection })(Plan);
+export default connect(null, { collection, addToCart })(Plan);

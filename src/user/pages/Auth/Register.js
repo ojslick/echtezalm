@@ -138,6 +138,7 @@ class Register extends React.Component {
 
   render() {
     const { errorMessage } = this.state;
+    console.log(this.state.options);
     return (
       <div className="register-container">
         <h1 className="register-container-welkom">
@@ -175,6 +176,7 @@ class Register extends React.Component {
             options={this.state.options}
             value={this.state.value}
             onChange={this.handleCountrySelect}
+            placeholder="land van verblijf"
           />
           <Input
             type="text"

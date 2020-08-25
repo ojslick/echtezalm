@@ -17,6 +17,8 @@ const PlanDescription = React.lazy(() =>
 );
 const CustomBox = React.lazy(() => import('./products/pages/CustomBox'));
 const PlanReview = React.lazy(() => import('./products/pages/PlanReview'));
+const CheckOut = React.lazy(() => import('./products/pages/Checkout'));
+const Cart = React.lazy(() => import('./products/pages/Cart'));
 const Login = React.lazy(() => import('./user/pages/Auth/Login'));
 const Register = React.lazy(() => import('./user/pages/Auth/Register'));
 
@@ -56,6 +58,8 @@ class App extends React.Component {
               exact
               component={PlanReview}
             />
+            <Route path="/cart" exact component={Cart} />
+            <Route path="/checkout" exact component={CheckOut} />
           </Switch>
         </Suspense>
       </Router>

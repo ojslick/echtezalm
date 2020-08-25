@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { addToCart } from '../../actions';
 
 import ProductItem from '../components/ProductItem';
 import productImg from './images/product.jpg';
@@ -27,7 +30,10 @@ class ProductList extends React.Component {
               ? 'Toegevoegd aan winkelwagen'
               : 'Voeg toe aan winkelkar'
           }
-          onClick={this.handleAddToCart}
+          onClick={() => {
+            this.handleAddToCart();
+            this.props.onClick();
+          }}
           prod={this.props.prod}
         />
       </React.Fragment>
@@ -35,4 +41,4 @@ class ProductList extends React.Component {
   }
 }
 
-export default ProductList;
+export default connect(null, { addToCart })(ProductList);

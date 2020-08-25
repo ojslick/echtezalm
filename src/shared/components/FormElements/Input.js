@@ -10,12 +10,18 @@ class Input extends React.Component {
     password: '',
     voornaam: '',
     achternaam: '',
+    zipCode: '',
+    city: '',
+    phone: '',
     errors: {
       email: '',
       password: '',
       voornaam: '',
       message: '',
       achternaam: '',
+      zipCode: '',
+      city: '',
+      phone: '',
     },
     error: '',
   };
@@ -57,6 +63,16 @@ class Input extends React.Component {
           value.length < 1 ? 'Please enter Your Last Name' : '';
         break;
 
+      case 'zipCode':
+        errors.zipCode = value.length < 1 ? 'Please enter Your Zip Code' : '';
+        break;
+      case 'phone':
+        errors.phone = value.length < 1 ? 'Please enter Your Phone Number' : '';
+        break;
+      case 'city':
+        errors.city = value.length < 1 ? 'Please enter Your City' : '';
+        break;
+
       case 'email':
         errors.email = validEmailRegex.test(value) ? '' : 'Email is not valid!';
         break;
@@ -70,7 +86,9 @@ class Input extends React.Component {
 
     this.setState({ [name]: value });
     this.props.inputValue(name, value);
-    this.props.handleErrors(name, this.state.errors[name]);
+    if (this.props.handleErrors) {
+      this.props.handleErrors(name, this.state.errors[name]);
+    }
   }
 
   render() {
@@ -86,9 +104,7 @@ class Input extends React.Component {
           }}
         >
           <input
-            className={`form-input ${
-              errors[this.props.name].length > 0 ? 'error' : ''
-            }`}
+            className={`form-input ${errors[this.props.name] ? 'error' : ''}`}
             type={this.props.type}
             placeholder={this.props.placeholder}
             onChange={(evt) => {
@@ -108,7 +124,7 @@ class Input extends React.Component {
           ) : (
             ''
           )}
-          {errors[this.props.name].length > 0 ? (
+          {errors[this.props.name] ? (
             <span className="form-error">{errors[this.props.name]}</span>
           ) : (
             ''

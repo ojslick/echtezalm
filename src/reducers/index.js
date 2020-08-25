@@ -4,6 +4,7 @@ import updateLoginReducer from './updateLoginReducer';
 import productReducer from './productReducer';
 import collectionReducer from './collectionReducer';
 import customBoxReducer from './customBoxReducer';
+import cartReducer from './cartReducer';
 
 import isLoggedInReducer from './isLoggedInReducer';
 
@@ -14,4 +15,5 @@ export default combineReducers({
   product: productReducer,
   collection: collectionReducer,
   customBox: customBoxReducer,
+  cart: cartReducer,
 });

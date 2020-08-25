@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { addToCart } from '../../actions';
 
 import EditionList from '../components/EditionList';
 import ProductList from '../components/ProductList';
@@ -17,9 +20,23 @@ import arrowRight from './images/arrowright.svg';
 import './LandingPage.css';
 
 class LandingPage extends React.Component {
-  state = { scrollHeight: '', products: [], collection: [], blogs: [] };
+  state = {
+    scrollHeight: '',
+    products: [],
+    collection: [],
+    blogs: [],
+    cartItems: [],
+    copyCartItems: [],
+  };
 
   async componentDidMount() {
+    const localCartData = JSON.parse(localStorage.getItem('cart'));
+    this.props.addToCart(localCartData);
+    !JSON.parse(localStorage.getItem('cart'))
+      ? localStorage.setItem('cart', JSON.stringify([]))
+      : this.setState({
+          copyCartItems: JSON.parse(localStorage.getItem('cart')),
+        });
     this.updateDimensions();
     window.addEventListener('scroll', this.updateDimensions);
     window.scrollTo(0, 0);
@@ -96,6 +113,14 @@ class LandingPage extends React.Component {
   updateDimensions = () => {
     this.setState({ scrollHeight: window.scrollY });
   };
+
+  saveCartToLocal = (id, name, price) => {
+    let copyCartItems = JSON.parse(localStorage.getItem('cart'));
+    copyCartItems.push({ id, name, price });
+    this.props.addToCart(copyCartItems);
+    localStorage.setItem('cart', JSON.stringify(copyCartItems));
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -194,37 +219,48 @@ class LandingPage extends React.Component {
               className="landing-page-products"
               style={{ minHeight: '450px' }}
             >
-              {this.state.scrollHeight >= 1700 ? (
-                <>
-                  {this.state.products[0] ? (
-                    this.state.products.map((product) => (
-                      <div
-                        className="animate__animated animate__pulse"
-                        key={product.id}
-                      >
-                        <ProductList
-                          key={product.id}
-                          price={product.price}
-                          name={product.name}
-                          prod={product}
-                        />
-                      </div>
-                    ))
-                  ) : (
+              <>
+                {this.state.products[0] ? (
+                  this.state.products.map((product) => (
                     <div
-                      style={{
-                        marginTop: '72px',
-                        height: '424px',
-                        width: '265px',
-                      }}
+                      className="animate__animated animate__pulse"
+                      key={product.id}
                     >
-                      <LoadingSpinner container />
+                      <ProductList
+                        key={product.id}
+                        price={product.price}
+                        name={product.name}
+                        prod={product}
+                        onClick={() => {
+                          this.setState({
+                            cartItems: {
+                              id: product.id,
+                              productName: product.name,
+                              price: product.price,
+                            },
+                          });
+
+                          this.saveCartToLocal(
+                            product.id,
+                            product.name,
+                            product.price
+                          );
+                        }}
+                      />
                     </div>
-                  )}
-                </>
-              ) : (
-                ''
-              )}
+                  ))
+                ) : (
+                  <div
+                    style={{
+                      marginTop: '72px',
+                      height: '424px',
+                      width: '265px',
+                    }}
+                  >
+                    <LoadingSpinner container />
+                  </div>
+                )}
+              </>
             </div>
           </div>
           <div className="landing-page-line"></div>
@@ -375,4 +411,4 @@ class LandingPage extends React.Component {
   }
 }
 
-export default LandingPage;
+export default connect(null, { addToCart })(LandingPage);

@@ -1,0 +1,145 @@
+.cart-page-container {
+  text-align: center;
+  padding: 79px 10%;
+  background: #0f0f0f;
+  min-height: 700px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.cart-container-header {
+  font-family: Playfair Display;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 37px;
+  letter-spacing: 0.05em;
+  color: #dac08e;
+  text-align: center;
+}
+
+.cart-product-container {
+  width: 100%;
+  margin-top: 50px;
+}
+
+.cart-product-column-title {
+  display: flex;
+  width: 100%;
+  padding: 0 14px;
+}
+
+.cart-product-column-title-product {
+  width: 50%;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+  text-align: left;
+  color: #ffffff;
+}
+
+.cart-product-column-title-quantity {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+  width: 20%;
+  color: #ffffff;
+}
+
+.cart-product-column-title-price {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+  width: 15%;
+  color: #ffffff;
+}
+
+.cart-product-column-title-sub-total {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+  width: 15%;
+  color: #ffffff;
+}
+
+.cart-product-column-title-product-image {
+  max-width: 102px;
+  max-height: 102px;
+  margin-right: 31px;
+}
+
+.cart-product-column-title-item {
+  background: #3a3a3a;
+  height: 129px;
+  margin-top: 10px;
+  width: 100%;
+  padding: 14px;
+  display: flex;
+}
+
+.cart-product-column-title-product-flex {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cart-product-column-title-product-remove {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+
+  color: #dac08e;
+}
+
+.cart-product-total-container {
+  margin-top: 43px;
+  width: 30%;
+}
+
+.cart-product-total-shipping {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-product-total-shipping-left {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.cart-product-total-shipping-right {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 37px;
+  letter-spacing: 0.05em;
+
+  color: #dac08e;
+}

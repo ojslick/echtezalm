@@ -1,0 +1,202 @@
+.checkout-container {
+  padding: 79px 10%;
+  text-align: center;
+  background: #0f0f0f;
+  min-height: 100vh;
+}
+
+.checkout-header {
+  font-family: Playfair Display;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 37px;
+  text-align: center;
+  letter-spacing: 0.05em;
+
+  color: #dac08e;
+}
+
+.checkout-body-flex {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.checkout-body-flex-left {
+  width: 60%;
+  text-align: left;
+  margin-top: 50px;
+}
+
+.checkout-body-flex-right {
+  width: 35%;
+
+  margin-top: 50px;
+}
+
+.checkout-body-flex-left-contact-information {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.checkout-body-flex-left-contact-delivery {
+  display: flex;
+  margin-top: 20px;
+}
+
+.checkout-body-flex-left-contact-delivery-text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.checkout-body-flex-left-shipping-name {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout-body-flex-left-shipping-name
+  > .login-form-select.css-2b097c-container {
+  width: 30%;
+}
+
+.checkout-checkbox-container {
+  margin-top: 21px;
+}
+
+.ui.checkbox .box:before,
+.ui.checkbox label:before {
+  background: none !important;
+  border: 1px solid #ffffff;
+}
+
+.ui.checkbox input:checked ~ .box:after,
+.ui.checkbox input:checked ~ label:after {
+  color: white;
+  border: 1px solid #ffffff;
+}
+
+.ui.checkbox .box:after,
+.ui.checkbox label:after {
+  color: white !important;
+  border-radius: 0.21428571rem;
+}
+
+.checkout-checkbox-text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+  margin: 0;
+  color: #ffffff;
+}
+
+.ui.fitted.checkbox {
+  margin-right: 18px;
+}
+
+.checkout-body-flex-right-product-list {
+  border: 1px solid #ffffff;
+  min-height: 300px;
+  width: 100%;
+}
+
+.checkout-body-flex-right-product-list-top {
+  padding: 0 15px 15px 15px;
+  height: 200px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.checkout-body-flex-right-product-list-top-product-container {
+  height: 85px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.checkout-body-flex-right-product-list-top-product-left {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.checkout-body-flex-right-product-list-top-img {
+  max-width: 85px;
+  max-height: 100%;
+  margin-right: 15px;
+}
+
+.checkout-body-flex-right-product-list-top-product-name {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.checkout-body-flex-right-product-list-top-product-price {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.05em;
+
+  color: #dac08e;
+}
+
+.checkout-body-flex-right-bottom {
+  height: 134px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 28px 15px;
+}
+
+.checkout-body-flex-right-bottom-shipping {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.checkout-body-flex-right-bottom-shipping-left {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.checkout-body-flex-right-bottom-shipping-right {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.05em;
+
+  color: #dac08e;
+}

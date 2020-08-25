@@ -40,7 +40,7 @@ class DropDownInput extends React.Component {
   render() {
     return (
       <Select
-        placeholder="land van verblijf"
+        placeholder={this.props.placeholder}
         className="login-form-select"
         styles={customStyles}
         theme={(theme) => ({
